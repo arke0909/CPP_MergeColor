@@ -1,16 +1,14 @@
 #pragma once
 #include<iostream>
+#include "Single.h"
+
+class Block;
 
 const int Map_HEIGHT = 6;
 const int Map_WIDTH = 7;
 
-enum class Block
-{
-	NONE = '0', OBSTAC = '1', RED = 'r', ORENGE = 'o', YELLOW = 'y',
-	GREEN = 'g', BLUE = 'b', PUPLE = 'p'
-};
+void MoveUpdate(Block inGameBlock[Map_HEIGHT][Map_WIDTH], bool isXMove, int dir);
+bool CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH]);
+void MergeColor(Block& block, Block& target);
 
-void MoveUpdate(char gameMap[Map_HEIGHT][Map_WIDTH], bool isXMove, int dir);
-
-
-void MapRender(char gameMap[Map_HEIGHT][Map_WIDTH]);
+void MapRender(Block inGameBlock[Map_HEIGHT][Map_WIDTH]);

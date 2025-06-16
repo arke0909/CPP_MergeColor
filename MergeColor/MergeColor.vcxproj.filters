@@ -49,6 +49,9 @@
     <ClCompile Include="GameLogic.cpp">
       <Filter>01.Core</Filter>
     </ClCompile>
+    <ClCompile Include="Block.h">
+      <Filter>03.Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">

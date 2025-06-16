@@ -3,7 +3,7 @@
 class Single
 {
 private:
-	Single();
+	Single() {}
 public:
 	static Single* GetInst()
 	{
@@ -22,5 +22,7 @@ public:
 	}
 private:
 	static Single* instance;
+public:
+	bool canInput = true;
 };
 

@@ -12,3 +12,8 @@ enum class Scene
 {
 	TITLE, GAME, QUIT, END
 };
+enum class BlockType
+{
+	NONE = '0', OBSTAC = '1', RED = 'r', ORENGE = 'o', YELLOW = 'y',
+	GREEN = 'g', BLUE = 'b', PUPLE = 'p'
+};

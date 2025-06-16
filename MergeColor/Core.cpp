@@ -6,57 +6,76 @@
 void Core::Run()
 {
 	Scene curScene = Scene::TITLE;
-	char gameMap[Map_HEIGHT][Map_WIDTH] =
+	char gameMapData[Map_HEIGHT][Map_WIDTH] =
 	{
-		"0000r0",
+		"0000rr",
 		"p10010",
 		"0o0000",
 		"000b00",
 		"01001g",
 		"0y0000"
 	};
+	Block inGameBlock[Map_HEIGHT][Map_WIDTH]
+	{};
 
-
-	Init(gameMap);
+	Init(gameMapData, inGameBlock);
 
 	while (true)
 	{
-		Update(gameMap);
+		Update(inGameBlock);
 		IsGotoxy(0, 0);
-		Render(gameMap);
-		//FrameSync(60);
+		Render(inGameBlock);
+		FrameSync(60);
 	}
 }
 
-void Core::Init(char gameMap[Map_HEIGHT][Map_WIDTH])
+void Core::Init(char gameMap[Map_HEIGHT][Map_WIDTH], Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
 	SetConsoleSettings(800, 400, false, L"Merge_Color");
+	SetLockResize();
 	SetCursorVisual(false, 50);
+
+	for (int i = 0; i < Map_HEIGHT; ++i)
+	{
+		for (int j = 0; j < Map_WIDTH; ++j)
+		{
+			inGameBlock[i][j] = Block{(BlockType)gameMap[i][j], false};
+		}
+	}
 }
 
 
-void Core::Update(char gameMap[Map_HEIGHT][Map_WIDTH])
+void Core::Update(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
-	Key eKey = KeyController();
 
-	switch (eKey)
+
+	return;
+	Key eKey = KeyController();
+	static Key saveKey = Key::FAIL;
+
+	if (!CheckEndMove(inGameBlock))
 	{
-	case Key::UP:
-		MoveUpdate(gameMap, false, -1);
+		saveKey = eKey;
+	}
+	cout << !CheckEndMove(inGameBlock);
+	switch (saveKey)
+	{
+	case Key::UP: 
+		MoveUpdate(inGameBlock, false, -1); 
 		break;
-	case Key::DOWN:
-		MoveUpdate(gameMap, false, 1);
+	case Key::DOWN: 
+		MoveUpdate(inGameBlock, false, 1); 
 		break;
 	case Key::LEFT:
-		MoveUpdate(gameMap, true, -1);
+		MoveUpdate(inGameBlock, true, -1);
 		break;
 	case Key::RIGHT:
-		MoveUpdate(gameMap, true, 1);
+		MoveUpdate(inGameBlock, true, 1);
 		break;
 	}
 }
 
-void Core::Render(char gameMap[Map_HEIGHT][Map_WIDTH])
+void Core::Render(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
-	MapRender(gameMap);
+	MapRender(inGameBlock);
 }
