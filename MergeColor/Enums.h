@@ -2,7 +2,7 @@
 enum class Key
 {
 	// W : ΩΩ∂Û¿” on off, e : push on off
-	UP, DOWN, LEFT, RIGHT,ESC, FAIL
+	UP, DOWN, LEFT, SPACE,RIGHT,ESC, FAIL
 };
 enum class Menu
 {
