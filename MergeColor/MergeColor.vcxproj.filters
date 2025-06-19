@@ -34,10 +34,22 @@
     <ClCompile Include="Core.cpp">
       <Filter>01.Core</Filter>
     </ClCompile>
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="KeyController.cpp" />
+    <ClCompile Include="Mci.cpp" />
+    <ClCompile Include="Single.cpp" />
+    <ClCompile Include="SelectScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
       <Filter>01.Core</Filter>
     </ClInclude>
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="KeyController.h" />
+    <ClInclude Include="Mci.h" />
+    <ClInclude Include="Single.h" />
+    <ClInclude Include="SelectScene.h" />
   </ItemGroup>
 </Project>

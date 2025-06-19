@@ -127,11 +127,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="KeyController.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mci.cpp" />
+    <ClCompile Include="SelectScene.cpp" />
+    <ClCompile Include="Single.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Console.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="KeyController.h" />
+    <ClInclude Include="Mci.h" />
+    <ClInclude Include="SelectScene.h" />
+    <ClInclude Include="Single.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
