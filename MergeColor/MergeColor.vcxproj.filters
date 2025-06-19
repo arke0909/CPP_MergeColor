@@ -34,22 +34,61 @@
     <ClCompile Include="Core.cpp">
       <Filter>01.Core</Filter>
     </ClCompile>
-    <ClCompile Include="Console.cpp" />
-    <ClCompile Include="KeyController.cpp" />
-    <ClCompile Include="Mci.cpp" />
-    <ClCompile Include="Single.cpp" />
-    <ClCompile Include="SelectScene.cpp" />
+    <ClCompile Include="Console.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyController.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Mci.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic.cpp">
+      <Filter>01.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.h">
+      <Filter>03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
       <Filter>01.Core</Filter>
     </ClInclude>
-    <ClInclude Include="Console.h" />
-    <ClInclude Include="Defines.h" />
-    <ClInclude Include="Enums.h" />
-    <ClInclude Include="KeyController.h" />
-    <ClInclude Include="Mci.h" />
-    <ClInclude Include="Single.h" />
-    <ClInclude Include="SelectScene.h" />
+    <ClInclude Include="Console.h">
+      <Filter>01.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyController.h">
+      <Filter>01.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Mci.h">
+      <Filter>01.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Single.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogic.h">
+      <Filter>01.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>04.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>02.Manager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
