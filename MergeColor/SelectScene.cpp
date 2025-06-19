@@ -72,14 +72,13 @@ Stage GetCurSelectStage()
 		}
 		break;
 	case Key::DOWN:
-		if (y < originy + 2)
+		if (y < originy + StageCnt - 1)
 		{
 			IsGotoxy(x - 2, y);
 			cout << " ";
 			IsGotoxy(x - 2, ++y);
 			cout << ">";
 			Sleep(100);
-			// 1 
 		}
 		break;
 	case Key::SPACE:
