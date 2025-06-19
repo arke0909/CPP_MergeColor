@@ -7,7 +7,7 @@
 void SlectSceneInit(Scene& _eCurScene, Stage& _eCurStage)
 {
 	_eCurStage = Stage::NONE;
-	SlectSceneUpdate(_eCurScene);
+	SlectSceneUpdate(_eCurScene, _eCurStage);
 	if (_eCurScene != Scene::TITLE)
 		return;
 	SlectSceneRender();
