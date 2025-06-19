@@ -4,24 +4,25 @@
 #include "Console.h"
 #include "KeyController.h"
 
-void SlectSceneInit(Scene& _eCurScene, Stage& _eCurStage)
+void SlectSceneInit(Scene& eCurScene, Stage& eCurStage)
 {
-	_eCurStage = Stage::NONE;
-	SlectSceneUpdate(_eCurScene);
-	if (_eCurScene != Scene::TITLE)
+	eCurStage = Stage::NONE;
+	SlectSceneUpdate(eCurScene, eCurStage);
+	if (eCurScene != Scene::TITLE)
 		return;
 	SlectSceneRender();
 	Sleep(60);
 }
 
-void SlectSceneUpdate(Scene& _eCurScene, Stage& _eCurStage)
+void SlectSceneUpdate(Scene& eCurScene, Stage& eCurStage)
 {
-	if (_eCurScene != Scene::SELECT)
+	if (eCurScene != Scene::SELECT)
 		return;
-	_eCurStage = GetCurSelectStage();
-	if (_eCurStage == Stage::FAIL)
+	eCurStage = GetCurSelectStage();
+	if (eCurStage == Stage::FAIL)
 		return;
-	_eCurScene = Scene::GAME;
+	eCurScene = Scene::GAME;
+	COORD resolution = GetConsoleResolution();
 	EnterAnimation();
 	//여기다 게임시작하는 함수 넣어야함
 }
@@ -91,13 +92,14 @@ Stage GetCurSelectStage()
 void EnterAnimation()
 {
 	COORD resolution = GetConsoleResolution();
-	int delaytime = 50;
+	int delaytime = 300;
 	SpiralAnimation(resolution, delaytime);
 	system("cls");
 }
 void SpiralAnimation(COORD _resolution, int _delaytime)
 {
-	SetColor(COLOR::BLACK, COLOR::WHITE);
+	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
+	SetColor(COLOR::WHITE, COLOR::BLACK);
 	system("cls");
 	int left = 0;
 	int right = _resolution.X / 2 - 1;
@@ -109,16 +111,16 @@ void SpiralAnimation(COORD _resolution, int _delaytime)
 		for (int i = left; i <= right; ++i)
 		{
 			IsGotoxy(i * 2, top);
-			cout << "  ";
-			Sleep(_delaytime);
+			wcout << L"██";
+			FrameSync(_delaytime);
 		}
 		++top;
 
 		for (int i = top; i <= bottom; ++i)
 		{
 			IsGotoxy(right * 2, i);
-			cout << "  ";
-			Sleep(_delaytime);
+			wcout << L"██";
+			FrameSync(_delaytime);
 		}
 		--right;
 
@@ -127,8 +129,8 @@ void SpiralAnimation(COORD _resolution, int _delaytime)
 			for (int i = right; i >= left; --i)
 			{
 				IsGotoxy(i * 2, bottom);
-				cout << "  ";
-				Sleep(_delaytime);
+				wcout << L"██";
+				FrameSync(_delaytime);
 			}
 			--bottom;
 		}
@@ -138,12 +140,12 @@ void SpiralAnimation(COORD _resolution, int _delaytime)
 			for (int i = bottom; i >= top; --i)
 			{
 				IsGotoxy(left * 2, i);
-				cout << "  ";
-				Sleep(_delaytime);
+				wcout << L"██";
+				FrameSync(_delaytime);
 			}
 			++left;
 		}
 	}
-
+	int wcoutmode = _setmode(_fileno(stdout), coutmode);
 	SetColor();
 }
