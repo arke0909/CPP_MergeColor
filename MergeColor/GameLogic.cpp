@@ -19,8 +19,7 @@ void MoveUpdate(Block inGameBlock[Map_HEIGHT][Map_WIDTH], bool isXMove, int dir)
 				PBlock target = &inGameBlock[j][next];
 
 				block->isMoving = !(next < 0 || next >= Map_WIDTH - 1)
-					&& target->blockType != BlockType::OBSTAC
-					&& !block->isMoving;
+					&& target->blockType != BlockType::OBSTAC;
 
 				if (block->blockType == BlockType::NONE ||
 					block->blockType == BlockType::OBSTAC || !block->isMoving)
@@ -55,14 +54,12 @@ void MoveUpdate(Block inGameBlock[Map_HEIGHT][Map_WIDTH], bool isXMove, int dir)
 		{
 			for (int j = 0; j < Map_WIDTH - 1; j++)
 			{
-
 				PBlock block = &inGameBlock[i][j];
 				int next = i + dir;
 				PBlock target = &inGameBlock[next][j];
 
-				block->isMoving = !(next < 0 || next >= Map_WIDTH - 1)
-					&& target->blockType != BlockType::OBSTAC
-					&& !block->isMoving;
+				block->isMoving = !(next < 0 || next >= Map_HEIGHT)
+					&& target->blockType != BlockType::OBSTAC;
 
 				if (block->blockType == BlockType::NONE ||
 					block->blockType == BlockType::OBSTAC || !block->isMoving)
@@ -106,36 +103,27 @@ bool CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 	return moving;
 }
 
-void MergeColor(Block& block, Block& target)
+bool CheckEndGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
-	if (block.blockType == target.blockType)
+	bool end = false;
+
+	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::NONE;
-	}
-	else if (block.blockType == BlockType::RED && target.blockType == BlockType::YELLOW ||
-		block.blockType == BlockType::YELLOW && target.blockType == BlockType::RED)
-	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::ORENGE;
-	}
-	else if (block.blockType == BlockType::RED && target.blockType == BlockType::BLUE ||
-		block.blockType == BlockType::BLUE && target.blockType == BlockType::RED)
-	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::PUPLE;
-	}
-	else if (block.blockType == BlockType::BLUE && target.blockType == BlockType::YELLOW ||
-		block.blockType == BlockType::YELLOW && target.blockType == BlockType::BLUE)
-	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::GREEN;
+		if (end) break;
+
+		for (int j = 0; j < Map_WIDTH; ++j)
+		{
+			if (inGameBlock[i][j].blockType != BlockType::NONE 
+				&& inGameBlock[i][j].blockType != BlockType::OBSTAC)
+			{
+				end = true;
+				break;
+			}
+		}
 	}
 
-	block.isMoving = false;
-	target.isMoving = false;
+	return end;
 }
-
 
 
 void MapRender(Block inGameBlock[Map_HEIGHT][Map_WIDTH])

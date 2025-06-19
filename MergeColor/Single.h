@@ -1,14 +1,16 @@
 #pragma once
 #include "defines.h"
+template<typename T>
 class Single
 {
-private:
+protected:
 	Single() {}
+	~Single() {}
 public:
-	static Single* GetInst()
+	static T* GetInst()
 	{
 		if (instance == nullptr)
-			instance = new Single;
+			instance = new T;
 		return instance;
 	}
 	static void DestroyInstance()
@@ -20,9 +22,7 @@ public:
 			instance = nullptr;
 		}
 	}
-private:
-	static Single* instance;
-public:
-	bool canInput = true;
+protected:
+	static T* instance;
 };
 

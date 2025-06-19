@@ -17,3 +17,7 @@ enum class BlockType
 	NONE = '0', OBSTAC = '1', RED = 'r', ORENGE = 'o', YELLOW = 'y',
 	GREEN = 'g', BLUE = 'b', PUPLE = 'p'
 };
+enum class InGameState
+{
+	NONE = 0, PLAYING = 1, CLEAR = 2
+};
