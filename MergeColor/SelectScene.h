@@ -1,11 +1,15 @@
-#pragma once
-#include"Enums.h"
+ï»¿#pragma once
+#include "TitleSystem.h"
 
-// StageCnt´Â ½ºÅ×ÀÌÁö °³¼ö
-const int StageCnt = 10;
-void SlectSceneInit(Scene& eCurScene, Stage& eCurStage);
-void SlectSceneUpdate(Scene& eCurScene, Stage& eCurStage);
+// StageCntëŠ” ìŠ¤í…Œì´ì§€ ê°œìˆ˜
 
-Stage GetCurSelectStage();
-void EnterAnimation();
-void SlectSceneRender();
+class  SelectScene
+{
+private:
+	int _stageCnt = 10;
+	TitleSystem titleSystem = TitleSystem(_stageCnt);
+
+public:
+	void Update(Scene& eCurScene, Stage& eCurStage);
+	void Render();
+};

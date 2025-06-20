@@ -20,6 +20,10 @@ Key KeyController()
 	{
 		return Key::RIGHT;
 	}
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
+	{
+		return Key::SPACE;
+	}
 	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
 	{
 		Sleep(60);

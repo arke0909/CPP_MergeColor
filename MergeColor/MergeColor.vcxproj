@@ -132,12 +132,14 @@
     <ClCompile Include="Block.h" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="KeyController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mci.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="InGameSystemManager.cpp" />
+    <ClCompile Include="TitleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="Single.h" />
     <ClInclude Include="InGameSystemManager.h" />
+    <ClInclude Include="TitleSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

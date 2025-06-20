@@ -4,16 +4,6 @@
 
 void Core::Run()
 {
-	char gameMapData[Map_HEIGHT][Map_WIDTH] =
-	{
-	"r1000r",
-	"010111",
-	"010000",
-	"000010",
-	"111010",
-	"r0001r"
-	};
-	
 	Init();
 
 	while (true)
@@ -27,9 +17,10 @@ void Core::Run()
 
 void Core::Init()
 {
-	SetConsoleSettings(800, 400, false, L"Merge_Color");
+	SetConsoleSettings(800, 600, false, L"Merge_Color");
 	SetLockResize();
 	SetCursorVisual(false, 50);
+	SceneManager::GetInst()->Init();
 }
 
 

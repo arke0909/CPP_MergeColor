@@ -1,47 +1,23 @@
 #pragma once
 #include "GameScene.h"
+#include "SelectScene.h"
+
 class SceneManager : public Single<SceneManager>
 {
-public:
-	Scene curScene = Scene::GAME;
+	friend class Single<SceneManager>;
 
+public:
+	Scene curScene = Scene::SELECT;
+	Stage curStage = Stage::NONE;
 private:
 	GameScene _gameScene;
+	SelectScene _selectScene;
+	SceneManager(){}
+	~SceneManager(){}
 
 public:
-	void Update()
-	{
-		switch (curScene)
-		{
-		case Scene::TITLE:
-			break;
-		case Scene::GAME:
-			_gameScene.Update();
-			break;
-		case Scene::QUIT:
-			break;
-		case Scene::SELECT:
-			break;
-		case Scene::END:
-			break;
-		}
-	}
-	void Render()
-	{
-		switch (curScene)
-		{
-		case Scene::TITLE:
-			break;
-		case Scene::GAME:
-			_gameScene.Render();
-			break;
-		case Scene::QUIT:
-			break;
-		case Scene::SELECT:
-			break;
-		case Scene::END:
-			break;
-		}
-	}
+	void Init();
+	void Update();
+	void Render();
 };
 
