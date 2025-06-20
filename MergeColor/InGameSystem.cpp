@@ -1,6 +1,6 @@
-#include "InGameSystemManager.h"
+#include "InGameSystem.h"
 
-void InGameSystemManager::Reset(char gameMap[Map_HEIGHT][Map_WIDTH], Block inGameBlock[Map_HEIGHT][Map_WIDTH])
+void InGameSystem::Reset(char gameMap[Map_HEIGHT][Map_WIDTH], Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
 	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
@@ -11,7 +11,7 @@ void InGameSystemManager::Reset(char gameMap[Map_HEIGHT][Map_WIDTH], Block inGam
 	}
 }
 
-void InGameSystemManager::MoveUpdate(Block inGameBlock[Map_HEIGHT][Map_WIDTH], bool isXMove, int dir)
+void InGameSystem::MoveUpdate(Block inGameBlock[Map_HEIGHT][Map_WIDTH], bool isXMove, int dir)
 {
 	if (isXMove)
 	{
@@ -55,7 +55,7 @@ void InGameSystemManager::MoveUpdate(Block inGameBlock[Map_HEIGHT][Map_WIDTH], b
 	}
 }
 
-bool InGameSystemManager::CalcBlock(PBlock block, PBlock target)
+bool InGameSystem::CalcBlock(PBlock block, PBlock target)
 {
 	if (block->blockType == BlockType::NONE ||
 		block->blockType == BlockType::OBSTAC || !block->isMoving)
@@ -82,7 +82,7 @@ bool InGameSystemManager::CalcBlock(PBlock block, PBlock target)
 	return true;
 }
 
-void InGameSystemManager::MergeColor(Block& block, Block& target)
+void InGameSystem::MergeColor(Block& block, Block& target)
 {
 	if (block.blockType == target.blockType)
 	{
@@ -112,7 +112,7 @@ void InGameSystemManager::MergeColor(Block& block, Block& target)
 	target.isMoving = false;
 }
 
-bool InGameSystemManager::CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
+bool InGameSystem::CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
 	bool moving = false;
 
@@ -128,7 +128,7 @@ bool InGameSystemManager::CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 	return moving;
 }
 
-bool InGameSystemManager::CheckEndGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
+bool InGameSystem::CheckEndGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
 	bool end = false;
 

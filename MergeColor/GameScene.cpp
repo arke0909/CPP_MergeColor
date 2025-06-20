@@ -2,6 +2,8 @@
 
 void GameScene::Init(char mapData[Map_HEIGHT][Map_WIDTH])
 {
+	inGameState = InGameState::PLAYING;
+
 	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
 		for (int j = 0; j < Map_WIDTH; ++j)

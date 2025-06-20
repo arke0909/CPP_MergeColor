@@ -5,7 +5,7 @@
 const int Map_HEIGHT = 6;
 const int Map_WIDTH = 7;
 
-class InGameSystemManager
+class InGameSystem
 {
 public:
 	void Reset(char gameMap[Map_HEIGHT][Map_WIDTH], Block inGameBlock[Map_HEIGHT][Map_WIDTH]);

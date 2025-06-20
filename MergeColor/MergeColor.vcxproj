@@ -138,7 +138,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mci.cpp" />
     <ClCompile Include="SelectScene.cpp" />
-    <ClCompile Include="InGameSystemManager.cpp" />
+    <ClCompile Include="InGameSystem.cpp" />
     <ClCompile Include="TitleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,7 +152,7 @@
     <ClInclude Include="Mci.h" />
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="Single.h" />
-    <ClInclude Include="InGameSystemManager.h" />
+    <ClInclude Include="InGameSystem.h" />
     <ClInclude Include="TitleSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

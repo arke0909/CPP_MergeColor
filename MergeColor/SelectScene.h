@@ -6,10 +6,11 @@
 class  SelectScene
 {
 private:
-	int _stageCnt = 10;
+	int _stageCnt = 0;
 	TitleSystem titleSystem = TitleSystem(_stageCnt);
 
 public:
+	SelectScene(int stageCnt) : _stageCnt(stageCnt) {}
 	void Update(Scene& eCurScene, Stage& eCurStage);
 	void Render();
 };
