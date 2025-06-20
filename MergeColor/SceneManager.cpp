@@ -4,12 +4,12 @@ SceneManager* SceneManager::instance = nullptr;
 void SceneManager::Init()
 {
 	char originMapData[Map_HEIGHT][Map_WIDTH]
-	{ "r1000r",
-	"010111",
-	"010000",
-	"000010",
-	"111010",
-	"r0001r" };
+	{ "0000rr",
+		"p10010",
+		"0o0000",
+		"000b00",
+		"01001g",
+		"0y0000" };
 	_gameScene.Init(originMapData);
 }
 

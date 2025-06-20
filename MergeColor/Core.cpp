@@ -17,7 +17,7 @@ void Core::Run()
 
 void Core::Init()
 {
-	SetConsoleSettings(800, 600, false, L"Merge_Color");
+	SetConsoleSettings(800, 400, false, L"Merge_Color");
 	SetLockResize();
 	SetCursorVisual(false, 50);
 	SceneManager::GetInst()->Init();
