@@ -14,18 +14,20 @@ void SelectScene::Update(Scene& eCurScene, Stage& eCurStage)
 void SelectScene::Render()
 {
 	COORD resolution = GetConsoleResolution();
-	int y = resolution.Y / 3;
+	int y = resolution.Y / 3 - 7;
 	IsGotoxy(0, y);
 	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
-	wcout << L"███    ███ ███████ ██████   ██████  ███████      ██████  ██████  ██       ██████  ██████ " << endl;
-	wcout << L"████  ████ ██      ██   ██ ██       ██          ██      ██    ██ ██      ██    ██ ██   ██" << endl;
-	wcout << L"██ ████ ██ █████   ██████  ██   ███ █████       ██      ██    ██ ██      ██    ██ ██████	" << endl;
-	wcout << L"██  ██  ██ ██      ██   ██ ██    ██ ██          ██      ██    ██ ██      ██    ██ ██   ██" << endl;
-	wcout << L"██      ██ ███████ ██   ██  ██████  ███████      ██████  ██████  ███████  ██████  ██   ██" << endl;
+	 wcout << L"   ███╗   ███╗███████╗██████╗  ██████╗ ███████╗     ██████╗ ██████╗ ██╗      ██████╗ ██████╗ " << endl;
+	 wcout << L"   ████╗ ████║██╔════╝██╔══██╗██╔════╝ ██╔════╝    ██╔════╝██╔═══██╗██║     ██╔═══██╗██╔══██╗" << endl;
+	 wcout << L"   ██╔████╔██║█████╗  ██████╔╝██║  ███╗█████╗      ██║     ██║   ██║██║     ██║   ██║██████╔╝" << endl;
+	 wcout << L"   ██║╚██╔╝██║██╔══╝  ██╔══██╗██║   ██║██╔══╝      ██║     ██║   ██║██║     ██║   ██║██╔══██╗" << endl;
+	 wcout << L"   ██║ ╚═╝ ██║███████╗██║  ██║╚██████╔╝███████╗    ╚██████╗╚██████╔╝███████╗╚██████╔╝██║  ██║" << endl;
+	 wcout << L"   ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝     ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝" << endl;
+
 
 	int wcoutmode = _setmode(_fileno(stdout), coutmode);
-	int x = resolution.X / 3;
-	y = resolution.Y / 3 * 2;
+	int x = resolution.X / 3 + 10;
+	y = resolution.Y / 3  + 4;
 	// 스테이지 선택 위치 StageCnt 지정해줘서 스테이지 개수만큼 출력
 	for (int i = 0; i < _stageCnt; i++)
 	{

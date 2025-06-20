@@ -2,9 +2,9 @@
 
 Stage TitleSystem::GetCurSelectStage()
 {
-	COORD resolution = GetConsoleResolution();
-	int x = resolution.X / 3;
-	static int y = resolution.Y / 3 * 2;
+	COORD resolution = GetConsoleResolution(); 
+	int x = resolution.X / 3 + 10;
+	static int y = resolution.Y / 3 + 4;;
 	static int originy = y;
 	Key eKey = KeyController();
 	switch (eKey)
