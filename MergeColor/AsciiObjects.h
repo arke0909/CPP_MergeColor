@@ -4,7 +4,7 @@
 class AsciiObjects
 {
 private:
-	std::vector<std::wstring> obj;
+	std::vector<std::string> obj;
 public:
 	void Init();
 	void Update();
