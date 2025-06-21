@@ -1,7 +1,11 @@
 #include "InGameSystem.h"
-
-void InGameSystem::Reset(char gameMap[Map_HEIGHT][Map_WIDTH], Block inGameBlock[Map_HEIGHT][Map_WIDTH])
+using std::max;
+using std::clock;
+#undef max;
+void InGameSystem::Reset(Map gameMap, Block inGameBlock[Map_HEIGHT][Map_WIDTH], float time)
 {
+	this->time = time;
+	startTime = clock();
 	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
 		for (int j = 0; j < Map_WIDTH; ++j)
@@ -128,25 +132,40 @@ bool InGameSystem::CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 	return moving;
 }
 
-bool InGameSystem::CheckEndGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
+bool InGameSystem::CheckClearGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
-	bool end = false;
+	bool end = true;
 
 	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
-		if (end) break;
+		if (!end) break;
 
 		for (int j = 0; j < Map_WIDTH; ++j)
 		{
 			if (inGameBlock[i][j].blockType != BlockType::NONE
 				&& inGameBlock[i][j].blockType != BlockType::OBSTAC)
 			{
-				end = true;
+				end = false;
 				break;
 			}
 		}
 	}
 	return end;
 }
+
+float InGameSystem::Timer()
+{
+	float currentTime = clock();
+	float gap = (currentTime - startTime) / CLOCKS_PER_SEC;
+	float result = time - gap;
+	result = max(0.f, result);
+	return result;
+}
+
+bool InGameSystem::CheckFailGame()
+{
+	return time == 0;
+}
+
 
 
