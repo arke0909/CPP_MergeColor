@@ -8,7 +8,7 @@ void InGameSystem::Reset(Map gameMap, Block inGameBlock[Map_HEIGHT][Map_WIDTH], 
 	startTime = clock();
 	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
-		for (int j = 0; j < Map_WIDTH; ++j)
+		for (int j = 0; j < Map_WIDTH - 1; ++j)
 		{
 			inGameBlock[i][j] = Block{ (BlockType)gameMap[i][j], false };
 		}
@@ -140,7 +140,7 @@ bool InGameSystem::CheckClearGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 	{
 		if (!end) break;
 
-		for (int j = 0; j < Map_WIDTH; ++j)
+		for (int j = 0; j < Map_WIDTH - 1; ++j)
 		{
 			if (inGameBlock[i][j].blockType != BlockType::NONE
 				&& inGameBlock[i][j].blockType != BlockType::OBSTAC)
