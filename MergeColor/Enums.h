@@ -19,7 +19,7 @@ enum class BlockType
 };
 enum class InGameState
 {
-	NONE = 0, PLAYING = 1, CLEAR = 2
+	NONE = 0, PLAYING = 1, CLEAR = 2, FAIL = 3,
 };
 enum class Stage
 {
