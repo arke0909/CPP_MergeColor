@@ -155,8 +155,8 @@ bool InGameSystem::CheckClearGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 
 float InGameSystem::Timer()
 {
-	float currentTime = clock();
-	float gap = (currentTime - startTime) / CLOCKS_PER_SEC;
+	float checkTime = clock();
+	float gap = (checkTime - startTime) / CLOCKS_PER_SEC;
 	currentTime = time - gap;
 	currentTime = max(0.f, currentTime);
 	return currentTime;
@@ -164,7 +164,7 @@ float InGameSystem::Timer()
 
 bool InGameSystem::CheckFailGame()
 {
-	return currentTime == 0;
+	return currentTime <= 0;
 }
 
 
