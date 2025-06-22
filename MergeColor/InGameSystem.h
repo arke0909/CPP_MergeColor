@@ -11,6 +11,7 @@ class InGameSystem
 {
 public:
 	float time = 0;
+	float currentTime = 0;
 	float startTime = 0;
 public:
 	void Reset(Map gameMap, Block inGameBlock[Map_HEIGHT][Map_WIDTH], float time);

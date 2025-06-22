@@ -4,7 +4,7 @@ using std::clock;
 #undef max;
 void InGameSystem::Reset(Map gameMap, Block inGameBlock[Map_HEIGHT][Map_WIDTH], float time)
 {
-	this->time = time;
+	this->time = currentTime = time;
 	startTime = clock();
 	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
@@ -157,14 +157,14 @@ float InGameSystem::Timer()
 {
 	float currentTime = clock();
 	float gap = (currentTime - startTime) / CLOCKS_PER_SEC;
-	float result = time - gap;
-	result = max(0.f, result);
-	return result;
+	currentTime = time - gap;
+	currentTime = max(0.f, currentTime);
+	return currentTime;
 }
 
 bool InGameSystem::CheckFailGame()
 {
-	return time == 0;
+	return currentTime == 0;
 }
 
 
