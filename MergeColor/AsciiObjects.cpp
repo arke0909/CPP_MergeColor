@@ -1,33 +1,56 @@
 ﻿#include "AsciiObjects.h"
 #include "Console.h"
+#include "Enums.h"
 #include <io.h>
 #include <fcntl.h>
 #include<vector>
 #include<string>
-void AsciiObjects::Init()
+void AsciiObjects::Init(InGameState CurGameState)
 {
-	obj = {
-		" _____   _        ______               _____     _    ",
-		"/ ____| | |      |  ____|     /\\      |  __ \\   | |   ",
-		"| |     | |      | |__       /  \\     | |__) |  | |   ",
-		"| |     | |      |  __|     / /\\ \\    |  _  /   | |   ",
-		"| |____ | |____  | |____   / ____ \\   | | \\ \\   |_|   ",
-		"\\_____| |______| |______| /_/    \\_\\  |_|  \\_\\  (_)   "
-	};
+	COORD resolution = GetConsoleResolution();
+	width = resolution.X / 2;
+	height = resolution.Y / 2;
+	switch (CurGameState)
+	{
+	case InGameState::CLEAR:
+		obj =
+		{
+			L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗\t\t",
+			L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║\t\t",
+			L"██║     ██║     █████╗  ███████║██████╔╝    ██║\t\t",
+			L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝\t\t",
+			L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗\t\t",
+			L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝\t\t"
+		};
+		break;
+	case InGameState::FAIL:
+		obj =
+		{
+			L"███████╗ █████╗ ██╗██╗	 \t\t",
+			L"██╔════╝██╔══██╗██║██║	 \t\t",
+			L"█████╗  ███████║██║██║	 \t\t",
+			L"██╔══╝  ██╔══██║██║██║	 \t\t",
+			L"██║     ██║  ██║██║███████╗\t\t",
+			L"╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝\t\t"
+		};
+		break;
+	}
 }
 void AsciiObjects::Update()
 {
-	for (std::string& line : obj)
+	for (std::wstring& line : obj)
 	{
 		std::rotate(line.begin(), line.begin() + 1, line.end());
 	}
 }
 void AsciiObjects::Render()
 {
+	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
 	for (int i = 0; i < obj.size(); ++i)
 	{
-		IsGotoxy(0, i);
-		std::cout << obj[i];
+		IsGotoxy(width, i + height);
+		std::wcout << obj[i];
 	}
+	int wcoutmode = _setmode(_fileno(stdout), coutmode);
 	Sleep(10);
 }

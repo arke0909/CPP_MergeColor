@@ -4,9 +4,11 @@
 class AsciiObjects
 {
 private:
-	std::vector<std::string> obj;
+	std::vector<std::wstring> obj;
+	int width;
+	int height;
 public:
-	void Init();
+	void Init(InGameState CurGameState);
 	void Update();
 	void Render();
 };
