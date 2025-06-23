@@ -6,29 +6,28 @@
 #include<string>
 void AsciiObjects::Init()
 {
-	obj.push_back(L"	 ██████╗██╗     ███████╗ █████╗ ██████╗ ██╗██╗		");
-	obj.push_back(L"	██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗██║██║		");
-	obj.push_back(L"	██║     ██║     █████╗  ███████║██████╔╝██║██║		");
-	obj.push_back(L"	██║     ██║     ██╔══╝  ██╔══██║██╔══██╗╚═╝╚═╝		");
-	obj.push_back(L"	╚██████╗███████╗███████╗██║  ██║██║  ██║██╗██╗		");
-	obj.push_back(L"	 ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝		");
-
+	obj = {
+		" _____   _        ______               _____     _    ",
+		"/ ____| | |      |  ____|     /\\      |  __ \\   | |   ",
+		"| |     | |      | |__       /  \\     | |__) |  | |   ",
+		"| |     | |      |  __|     / /\\ \\    |  _  /   | |   ",
+		"| |____ | |____  | |____   / ____ \\   | | \\ \\   |_|   ",
+		"\\_____| |______| |______| /_/    \\_\\  |_|  \\_\\  (_)   "
+	};
 }
 void AsciiObjects::Update()
 {
-	for(int i = 0; i < obj.size(); i++)
+	for (std::string& line : obj)
 	{
-		std::rotate(obj[i].begin(), obj[i].begin() + 1, obj[i].end());
+		std::rotate(line.begin(), line.begin() + 1, line.end());
 	}
 }
 void AsciiObjects::Render()
 {
-	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
-	SetColor();
-	for(int i = 0; i < obj.size(); ++i)
+	for (int i = 0; i < obj.size(); ++i)
 	{
-		IsGotoxy(0, obj.size() + i);
-		std::wcout << obj[i];
+		IsGotoxy(0, i);
+		std::cout << obj[i];
 	}
-	int wcoutmode = _setmode(_fileno(stdout), coutmode);
+	Sleep(10);
 }
