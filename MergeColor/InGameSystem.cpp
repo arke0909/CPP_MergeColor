@@ -88,32 +88,25 @@ bool InGameSystem::CalcBlock(PBlock block, PBlock target)
 
 void InGameSystem::MergeColor(Block& block, Block& target)
 {
-	if (block.blockType == target.blockType)
-	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::NONE;
-	}
-	else if (block.blockType == BlockType::RED && target.blockType == BlockType::YELLOW ||
-		block.blockType == BlockType::YELLOW && target.blockType == BlockType::RED)
-	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::ORENGE;
-	}
-	else if (block.blockType == BlockType::RED && target.blockType == BlockType::BLUE ||
-		block.blockType == BlockType::BLUE && target.blockType == BlockType::RED)
-	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::PUPLE;
-	}
-	else if (block.blockType == BlockType::BLUE && target.blockType == BlockType::YELLOW ||
-		block.blockType == BlockType::YELLOW && target.blockType == BlockType::BLUE)
-	{
-		block.blockType = BlockType::NONE;
-		target.blockType = BlockType::GREEN;
-	}
-
+	block.blockType = BlockType::NONE;
 	block.isMoving = false;
+	target.blockType = CalcBlockType(block.blockType, target.blockType);
 	target.isMoving = false;
+}
+
+BlockType InGameSystem::CalcBlockType(BlockType block, BlockType target)
+{
+	if (block == BlockType::RED && target == BlockType::YELLOW ||
+		block == BlockType::YELLOW && target == BlockType::RED)
+		return BlockType::ORENGE;
+	else if (block == BlockType::RED && target == BlockType::BLUE ||
+		block == BlockType::BLUE && target == BlockType::RED)
+		return BlockType::PUPLE;
+	else if (block == BlockType::BLUE && target == BlockType::YELLOW ||
+		block == BlockType::YELLOW && target == BlockType::BLUE)
+		return BlockType::GREEN;
+
+	return BlockType::NONE;
 }
 
 bool InGameSystem::CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
@@ -166,6 +159,24 @@ bool InGameSystem::CheckFailGame()
 {
 	return currentTime <= 0;
 }
+
+void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
+{
+	COLOR aColor = TransitionColor(a);
+	COLOR bColor = TransitionColor(b);
+	COLOR resultColor = TransitionColor(CalcBlockType(a, b));
+
+	SetColor(aColor);
+	cout << "бс ";
+	SetColor();
+	cout << "+ ";
+	SetColor(bColor);
+	cout << "бс ";
+	SetColor();
+	cout << "= ";
+	SetColor(resultColor);
+	cout << "бс";
+} 
 
 
 
