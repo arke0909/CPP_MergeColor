@@ -5,25 +5,25 @@
 void AsciiObjects::Init()
 {
 	COORD resolution = GetConsoleResolution();
-	width = resolution.X / 2;
-	height = resolution.Y / 2;
+	height = resolution.Y * 0.45f;
 	clearAscii =
 	{
-		L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗\t\t",
-		L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║\t\t",
-		L"██║     ██║     █████╗  ███████║██████╔╝    ██║\t\t",
-		L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝\t\t",
-		L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗\t\t",
-		L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝\t\t"
+		L"  ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗                                                ",
+		L" ██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║                                                ",
+		L" ██║     ██║     █████╗  ███████║██████╔╝    ██║                                                ",
+		L" ██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝                                                ",
+		L" ╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗                                                ",
+		L"  ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝                                                "
 	};
 	failAscii =
 	{
-		L"███████╗ █████╗ ██╗██╗	 \t\t",
-		L"██╔════╝██╔══██╗██║██║	 \t\t",
-		L"█████╗  ███████║██║██║	 \t\t",
-		L"██╔══╝  ██╔══██║██║██║	 \t\t",
-		L"██║     ██║  ██║██║███████╗\t\t",
-		L"╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝\t\t"
+		L" ███████╗ █████╗ ██╗██╗                                                                          ",
+		L" ██╔════╝██╔══██╗██║██║                                                                          ",
+		L" █████╗  ███████║██║██║                                                                          ",
+		L" ██╔══╝  ██╔══██║██║██║                                                                          ",
+		L" ██║     ██║  ██║██║███████╗██╗██╗                                                               ",
+		L" ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝╚═╝                                                               "
+
 	};
 }
 void AsciiObjects::Update(InGameState CurGameState)
@@ -53,14 +53,14 @@ void AsciiObjects::Render(InGameState CurGameState)
 	case InGameState::CLEAR:
 		for (int i = 0; i < clearAscii.size(); ++i)
 		{
-			IsGotoxy(width, i + height);
+			IsGotoxy(0, i + height);
 			std::wcout << clearAscii[i];
 		}
 		break;
 	case InGameState::FAIL:
 		for (int i = 0; i < failAscii.size(); ++i)
 		{
-			IsGotoxy(width, i + height);
+			IsGotoxy(0, i + height);
 			std::wcout << failAscii[i];
 		}
 		break;

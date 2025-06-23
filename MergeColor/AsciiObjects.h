@@ -7,7 +7,6 @@ class AsciiObjects
 private:
 	std::vector<std::wstring> clearAscii;
 	std::vector<std::wstring> failAscii;
-	int width;
 	int height;
 public:
 	AsciiObjects() 
