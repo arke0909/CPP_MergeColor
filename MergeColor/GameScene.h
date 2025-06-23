@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "KeyController.h"
+#include "AsciiObjects.h"
 #include "InGameSystem.h"
 #include "Console.h"
 using std::pair;
@@ -22,6 +23,7 @@ private:
 	//bool _isPause = false;
 	InGameState _inGameState = InGameState::PLAYING;
 	InGameSystem _gameSystem = InGameSystem();
+	AsciiObjects _asciiObjects = AsciiObjects();
 	Map _originMapData;
 	Block _inGameMap[Map_HEIGHT][Map_WIDTH];
 
@@ -38,9 +40,7 @@ public:
 private:
 	void PlayingUpdate();
 	void PlayingRender();
-	void ClearUpdate();
-	void ClearRender();
-	void FailUpdate();
-	void FailRender();
+	void NonPlayingUpdate();
+	void NonPlayingRender();
 };
 

@@ -3,54 +3,72 @@
 #include "Enums.h"
 #include <io.h>
 #include <fcntl.h>
-#include<vector>
-#include<string>
-void AsciiObjects::Init(InGameState CurGameState)
+void AsciiObjects::Init()
 {
 	COORD resolution = GetConsoleResolution();
 	width = resolution.X / 2;
 	height = resolution.Y / 2;
+	clearAscii =
+	{
+		L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗\t\t",
+		L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║\t\t",
+		L"██║     ██║     █████╗  ███████║██████╔╝    ██║\t\t",
+		L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝\t\t",
+		L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗\t\t",
+		L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝\t\t"
+	};
+	failAscii =
+	{
+		L"███████╗ █████╗ ██╗██╗	 \t\t",
+		L"██╔════╝██╔══██╗██║██║	 \t\t",
+		L"█████╗  ███████║██║██║	 \t\t",
+		L"██╔══╝  ██╔══██║██║██║	 \t\t",
+		L"██║     ██║  ██║██║███████╗\t\t",
+		L"╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝\t\t"
+	};
+}
+void AsciiObjects::Update(InGameState CurGameState)
+{
 	switch (CurGameState)
 	{
 	case InGameState::CLEAR:
-		obj =
+		for (std::wstring& line : clearAscii)
 		{
-			L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗\t\t",
-			L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║\t\t",
-			L"██║     ██║     █████╗  ███████║██████╔╝    ██║\t\t",
-			L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝\t\t",
-			L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗\t\t",
-			L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝\t\t"
-		};
+			std::rotate(line.begin(), line.begin() + 1, line.end());
+		}
 		break;
 	case InGameState::FAIL:
-		obj =
+		for (std::wstring& line : failAscii)
 		{
-			L"███████╗ █████╗ ██╗██╗	 \t\t",
-			L"██╔════╝██╔══██╗██║██║	 \t\t",
-			L"█████╗  ███████║██║██║	 \t\t",
-			L"██╔══╝  ██╔══██║██║██║	 \t\t",
-			L"██║     ██║  ██║██║███████╗\t\t",
-			L"╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝\t\t"
-		};
+			std::rotate(line.begin(), line.begin() + 1, line.end());
+		}
 		break;
 	}
+
 }
-void AsciiObjects::Update()
+void AsciiObjects::Render(InGameState CurGameState)
 {
-	for (std::wstring& line : obj)
+	switch (CurGameState)
 	{
-		std::rotate(line.begin(), line.begin() + 1, line.end());
+	case InGameState::CLEAR:
+		int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
+		for (int i = 0; i < clearAscii.size(); ++i)
+		{
+			IsGotoxy(width, i + height);
+			std::wcout << clearAscii[i];
+		}
+		int wcoutmode = _setmode(_fileno(stdout), coutmode);
+		Sleep(10);
+		break;
+	case InGameState::FAIL:
+		int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
+		for (int i = 0; i < failAscii.size(); ++i)
+		{
+			IsGotoxy(width, i + height);
+			std::wcout << failAscii[i];
+		}
+		int wcoutmode = _setmode(_fileno(stdout), coutmode);
+		Sleep(10);
+		break;
 	}
-}
-void AsciiObjects::Render()
-{
-	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
-	for (int i = 0; i < obj.size(); ++i)
-	{
-		IsGotoxy(width, i + height);
-		std::wcout << obj[i];
-	}
-	int wcoutmode = _setmode(_fileno(stdout), coutmode);
-	Sleep(10);
 }

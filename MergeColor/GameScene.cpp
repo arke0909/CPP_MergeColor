@@ -25,12 +25,10 @@ void GameScene::Update(GameData gameData)
 	case InGameState::PLAYING:
 		PlayingUpdate();
 		break;
-	case InGameState::CLEAR:
-		ClearUpdate();
+	default:
+		NonPlayingUpdate();
 		break;
-	case InGameState::FAIL:
-		FailUpdate();
-		break;
+
 	}
 }
 
@@ -41,11 +39,8 @@ void GameScene::Render()
 	case InGameState::PLAYING:
 		PlayingRender();
 		break;
-	case InGameState::CLEAR:
-		ClearRender();
-		break;
-	case InGameState::FAIL:
-		FailRender();
+	default:
+		NonPlayingRender();
 		break;
 	}
 
@@ -110,7 +105,7 @@ void GameScene::PlayingRender()
 		IsGotoxy(resolution.X * 0.3f * (i + 1) - 15, resolution.Y * 0.25f);
 		BlockType a = colorInfo[i].first;
 		BlockType b = colorInfo[i].second;
-		_gameSystem.RenderMergeInfoUI(a,b);
+		_gameSystem.RenderMergeInfoUI(a, b);
 	}
 
 
@@ -128,22 +123,12 @@ void GameScene::PlayingRender()
 	}
 }
 
-void GameScene::ClearUpdate()
+void GameScene::NonPlayingUpdate()
 {
-
+	_asciiObjects.Update(_inGameState);
 }
 
-void GameScene::ClearRender()
+void GameScene::NonPlayingRender()
 {
-
-}
-
-void GameScene::FailUpdate()
-{
-
-}
-
-void GameScene::FailRender()
-{
-
+	_asciiObjects.Render(_inGameState);
 }

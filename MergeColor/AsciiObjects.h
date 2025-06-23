@@ -1,15 +1,20 @@
 #pragma once
 #include<vector>
-#include<string>
 class AsciiObjects
 {
 private:
-	std::vector<std::wstring> obj;
+	std::vector<std::wstring> clearAscii;
+	std::vector<std::wstring> failAscii;
 	int width;
 	int height;
 public:
-	void Init(InGameState CurGameState);
-	void Update();
-	void Render();
+	AsciiObjects() 
+	{
+		Init();
+	}
+
+	void Init();
+	void Update(InGameState CurGameState);
+	void Render(InGameState CurGameState);
 };
 
