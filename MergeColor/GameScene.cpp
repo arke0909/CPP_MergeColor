@@ -3,10 +3,10 @@
 
 void GameScene::Update(GameData gameData)
 {
-	if (dataId != gameData.dataId)
+	if (_dataId != gameData.dataId)
 	{
-		isClear = false;
-		dataId = gameData.dataId;
+		_isClear = false;
+		_dataId = gameData.dataId;
 		_inGameState = InGameState::PLAYING;
 
 		for (int i = 0; i < Map_HEIGHT; ++i)
@@ -17,11 +17,47 @@ void GameScene::Update(GameData gameData)
 			}
 		}
 		_gameSystem.Reset(_originMapData, _inGameMap,
-			gameData.timer); 
+			gameData.timer);
 	}
 
-	time = _gameSystem.Timer();
-	isClear = _gameSystem.CheckClearGame(_inGameMap);
+	switch (_inGameState)
+	{
+	case InGameState::PLAYING:
+		PlayingUpdate();
+		break;
+	case InGameState::CLEAR:
+		ClearUpdate();
+		break;
+	case InGameState::FAIL:
+		FailUpdate();
+		break;
+	}
+}
+
+void GameScene::Render()
+{
+	switch (_inGameState)
+	{
+	case InGameState::PLAYING:
+		PlayingRender();
+		break;
+	case InGameState::CLEAR:
+		ClearRender();
+		break;
+	case InGameState::FAIL:
+		FailRender();
+		break;
+	}
+
+	SetColor();
+}
+
+void GameScene::PlayingUpdate()
+{
+	if (_isFail)
+		_inGameState = InGameState::FAIL;
+	else if (_isClear)
+		_inGameState = InGameState::CLEAR;
 
 	static Key saveKey = Key::FAIL;
 
@@ -49,28 +85,27 @@ void GameScene::Update(GameData gameData)
 		break;
 	}
 
-	if ((GetAsyncKeyState('R') & 0x8000) && isMoveEnd
-		&& !isClear)
+	if ((GetAsyncKeyState('R') & 0x8000) && isMoveEnd)
 	{
 		_gameSystem.Reset(_originMapData, _inGameMap
 			, _gameSystem.time);
 	}
+
+	_time = _gameSystem.Timer();
+	_isClear = _gameSystem.CheckClearGame(_inGameMap);
+	_isFail = _gameSystem.CheckFailGame();
 }
 
-void GameScene::Render()
+void GameScene::PlayingRender()
 {
-	cout.precision(2);
-	if (isClear)
-	{
-		_inGameState = InGameState::CLEAR;
-	}
-	else
-	{
-		cout << std::setw(5) << std::setfill('0') << std::fixed;
-		cout << time;
-	}
 	COORD resolution = GetConsoleResolution();
-	float x = (resolution.X * 0.5f) - (Map_WIDTH - 1) / 2;
+
+	cout.precision(2);
+	IsGotoxy(resolution.X * 0.5f - 2, resolution.Y * 0.15f);
+	cout << std::setw(5) << std::setfill('0') << std::fixed;
+	cout << _time;
+
+	float x = (resolution.X * 0.5f) - ((Map_WIDTH - 1) / 2) * 2;
 	float y = (resolution.Y * 0.5f) - Map_HEIGHT / 2;
 	for (int i = 0; i < Map_HEIGHT; ++i)
 	{
@@ -82,5 +117,24 @@ void GameScene::Render()
 
 		cout << '\n';
 	}
-	SetColor();
+}
+
+void GameScene::ClearUpdate()
+{
+
+}
+
+void GameScene::ClearRender()
+{
+
+}
+
+void GameScene::FailUpdate()
+{
+
+}
+
+void GameScene::FailRender()
+{
+
 }
