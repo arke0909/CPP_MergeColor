@@ -88,15 +88,23 @@ bool InGameSystem::CalcBlock(PBlock block, PBlock target)
 
 void InGameSystem::MergeColor(Block& block, Block& target)
 {
-	block.blockType = BlockType::NONE;
+	BlockType calcBlockType = CalcBlockType(block.blockType, target.blockType);
+
 	block.isMoving = false;
-	target.blockType = CalcBlockType(block.blockType, target.blockType);
 	target.isMoving = false;
+
+	if (calcBlockType != target.blockType)
+	{
+		block.blockType = BlockType::NONE;
+		target.blockType = calcBlockType;
+	}
 }
 
 BlockType InGameSystem::CalcBlockType(BlockType block, BlockType target)
 {
-	if (block == BlockType::RED && target == BlockType::YELLOW ||
+	if (block == target)
+		return BlockType::NONE;
+	else if (block == BlockType::RED && target == BlockType::YELLOW ||
 		block == BlockType::YELLOW && target == BlockType::RED)
 		return BlockType::ORENGE;
 	else if (block == BlockType::RED && target == BlockType::BLUE ||
@@ -106,7 +114,7 @@ BlockType InGameSystem::CalcBlockType(BlockType block, BlockType target)
 		block == BlockType::YELLOW && target == BlockType::BLUE)
 		return BlockType::GREEN;
 
-	return BlockType::NONE;
+	return target;
 }
 
 bool InGameSystem::CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
@@ -177,7 +185,7 @@ void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
 	SetColor(resultColor);
 	cout << "бс";
 	SetColor();
-} 
+}
 
 
 
