@@ -1,7 +1,9 @@
 #pragma once
+#include <vector>
 #include "KeyController.h"
 #include "InGameSystem.h"
 #include "Console.h"
+using std::pair;
 
 typedef struct GameDataStruct 
 {
@@ -22,6 +24,13 @@ private:
 	InGameSystem _gameSystem = InGameSystem();
 	Map _originMapData;
 	Block _inGameMap[Map_HEIGHT][Map_WIDTH];
+
+	pair<BlockType, BlockType> colorInfo[3]
+	{
+		{BlockType::RED, BlockType::YELLOW},
+		{BlockType::RED, BlockType::BLUE},
+		{BlockType::YELLOW, BlockType::BLUE},
+	};
 
 public:
 	void Update(GameData mapData);

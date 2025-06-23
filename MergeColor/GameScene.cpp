@@ -101,9 +101,18 @@ void GameScene::PlayingRender()
 	COORD resolution = GetConsoleResolution();
 
 	cout.precision(2);
-	IsGotoxy(resolution.X * 0.5f - 2, resolution.Y * 0.15f);
+	IsGotoxy(resolution.X * 0.5f - 3, resolution.Y * 0.15f);
 	cout << std::setw(5) << std::setfill('0') << std::fixed;
 	cout << _time;
+
+	for (int i = 0; i < 3; ++i)
+	{
+		IsGotoxy(resolution.X * 0.3f * (i + 1) - 15, resolution.Y * 0.25f);
+		BlockType a = colorInfo[i].first;
+		BlockType b = colorInfo[i].second;
+		_gameSystem.RenderMergeInfoUI(a,b);
+	}
+
 
 	float x = (resolution.X * 0.5f) - ((Map_WIDTH - 1) / 2) * 2;
 	float y = (resolution.Y * 0.5f) - Map_HEIGHT / 2;
