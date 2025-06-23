@@ -1,8 +1,7 @@
 ﻿#include "AsciiObjects.h"
-#include "Console.h"
-#include "Enums.h"
 #include <io.h>
 #include <fcntl.h>
+
 void AsciiObjects::Init()
 {
 	COORD resolution = GetConsoleResolution();
@@ -48,27 +47,24 @@ void AsciiObjects::Update(InGameState CurGameState)
 }
 void AsciiObjects::Render(InGameState CurGameState)
 {
+	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
 	switch (CurGameState)
 	{
 	case InGameState::CLEAR:
-		int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
 		for (int i = 0; i < clearAscii.size(); ++i)
 		{
 			IsGotoxy(width, i + height);
 			std::wcout << clearAscii[i];
 		}
-		int wcoutmode = _setmode(_fileno(stdout), coutmode);
-		Sleep(10);
 		break;
 	case InGameState::FAIL:
-		int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
 		for (int i = 0; i < failAscii.size(); ++i)
 		{
 			IsGotoxy(width, i + height);
 			std::wcout << failAscii[i];
 		}
-		int wcoutmode = _setmode(_fileno(stdout), coutmode);
-		Sleep(10);
 		break;
 	}
+	int wcoutmode = _setmode(_fileno(stdout), coutmode);
+	Sleep(10);
 }

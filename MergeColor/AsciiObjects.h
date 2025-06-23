@@ -1,5 +1,7 @@
 #pragma once
 #include<vector>
+#include "Console.h"
+#include "Enums.h"
 class AsciiObjects
 {
 private:
