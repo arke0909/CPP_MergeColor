@@ -176,6 +176,7 @@ void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
 	cout << "= ";
 	SetColor(resultColor);
 	cout << "бс";
+	SetColor();
 } 
 
 
