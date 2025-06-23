@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AsciiObjects.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Block.h" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
@@ -156,6 +157,9 @@
     <ClInclude Include="Single.h" />
     <ClInclude Include="InGameSystem.h" />
     <ClInclude Include="TitleSystem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
