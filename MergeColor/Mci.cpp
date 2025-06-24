@@ -8,8 +8,7 @@
 static std::vector<SoundEntry> SoundTable =
 {
 	{ L"Resource\\Sound\\BackgroundMusic.mp3", 1000, 0 },
-	{ L"Resource\\Sound\\MergeEffect.wav", 100, 0 },
-	{ L"Resource\\Sound\\MoveEffect.wav", 100, 0 }
+	{ L"Resource\\Sound\\MergeEffect.wav", 100, 0 }
 };
 
 bool OpenMciDevice(LPCWSTR deviceType, LPCWSTR name, UINT& deviceid)

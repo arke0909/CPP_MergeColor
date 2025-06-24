@@ -6,10 +6,10 @@
 void Core::Run()
 {
 	Init();
+	
 
 	while (true)
 	{
-		SoundManager::GetInst()->PlayBGM();
 		Update();
 		IsGotoxy(0, 0);
 		Render();
@@ -23,6 +23,7 @@ void Core::Init()
 	SetLockResize();
 	SetCursorVisual(false, 50);
 	SceneManager::GetInst()->Init();
+	SoundManager::GetInst()->PlayBGM();
 }
 
 

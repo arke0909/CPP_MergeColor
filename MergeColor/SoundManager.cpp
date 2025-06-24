@@ -9,5 +9,5 @@ void SoundManager::PlayBGM()
 
 void SoundManager::PlayEffect()
 {
-
+	PlaySoundID(SOUNDID::MERGE, false);
 }

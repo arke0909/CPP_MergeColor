@@ -9,7 +9,7 @@ void PlayMciDevice(UINT deviced, bool repeat = false);
 
 enum class SOUNDID
 {
-    BGM, MERGE, MOVE
+    BGM, MERGE
 };
 
 struct SoundEntry
