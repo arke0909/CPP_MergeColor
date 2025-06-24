@@ -1,16 +1,19 @@
 #pragma once
 enum class Key
 {
-	// W : ΩΩ∂Û¿” on off, e : push on off
 	UP, DOWN, LEFT, SPACE,RIGHT,ESC, FAIL
 };
 enum class Menu
 {
 	START, QUIT, FAIL
 };
+enum class Select
+{
+	EXIT, RETRY
+};
 enum class Scene
 {
-	TITLE, GAME, QUIT, SELECT, END
+	TITLE, GAME, QUIT, END
 };
 enum class BlockType
 {
