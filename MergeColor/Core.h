@@ -1,4 +1,6 @@
 #pragma once
+#include "SceneManager.h"
+#include "Console.h"
 class Core
 {
 public:

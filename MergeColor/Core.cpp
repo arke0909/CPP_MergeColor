@@ -1,6 +1,5 @@
 #include "Core.h"
-#include "SceneManager.h"
-#include "Console.h"
+
 
 void Core::Run()
 {
