@@ -141,6 +141,7 @@
     <ClCompile Include="Mci.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="InGameSystem.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TitleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="Single.h" />
     <ClInclude Include="InGameSystem.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="TitleSystem.h" />
   </ItemGroup>
   <ItemGroup>

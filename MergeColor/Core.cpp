@@ -1,6 +1,7 @@
 #include "Core.h"
 #include "SceneManager.h"
 #include "Console.h"
+#include "SoundManager.h"
 
 void Core::Run()
 {
@@ -8,6 +9,7 @@ void Core::Run()
 
 	while (true)
 	{
+		SoundManager::GetInst()->PlayBGM();
 		Update();
 		IsGotoxy(0, 0);
 		Render();
