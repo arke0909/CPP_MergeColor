@@ -1,9 +1,10 @@
 #include "Core.h"
-
+#include "SoundManager.h"
 
 void Core::Run()
 {
 	Init();
+	
 
 	while (true)
 	{
@@ -20,6 +21,7 @@ void Core::Init()
 	SetLockResize();
 	SetCursorVisual(false, 50);
 	SceneManager::GetInst()->Init();
+	SoundManager::GetInst()->PlayBGM();
 }
 
 
