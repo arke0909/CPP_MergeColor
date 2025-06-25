@@ -1,7 +1,7 @@
 #include "GameScene.h"
 #include <iomanip>
 
-void GameScene::Update(GameData gameData)
+void GameScene::Update(Scene &curScene, GameData gameData)
 {
 	if (_dataId != gameData.dataId)
 	{
@@ -26,7 +26,7 @@ void GameScene::Update(GameData gameData)
 		PlayingUpdate();
 		break;
 	default:
-		NonPlayingUpdate();
+		NonPlayingUpdate(curScene);
 		break;
 
 	}
@@ -126,12 +126,36 @@ void GameScene::PlayingRender()
 	}
 }
 
-void GameScene::NonPlayingUpdate()
+void GameScene::NonPlayingUpdate(Scene &curScene)
 {
 	_asciiObjects.Update(_inGameState);
+
+	static int x = 0;
+
+	Key eKey = KeyController();
+	Select curSelect;
+
+	switch (_inGameState)
+	{
+	case InGameState::CLEAR:
+		curSelect = _gameSystem.GetCurrentSelectWhenClear(curScene);
+		break;
+	case InGameState::FAIL:
+		curSelect = _gameSystem.GetCurrentSelectWhenFail(curScene);
+		break;
+	}
+
 }
 
 void GameScene::NonPlayingRender()
 {
 	_asciiObjects.Render(_inGameState);
+
+	switch (_inGameState)
+	{
+	case InGameState::CLEAR:
+		break;
+	case InGameState::FAIL:
+		break;
+	}
 }
