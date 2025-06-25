@@ -4,7 +4,6 @@
 void Core::Run()
 {
 	Init();
-	
 
 	while (true)
 	{

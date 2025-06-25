@@ -135,6 +135,7 @@
     <ClCompile Include="ClearInfo.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="FadeManager.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="KeyController.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="FadeManager.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="KeyController.h" />
