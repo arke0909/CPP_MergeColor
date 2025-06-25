@@ -6,7 +6,7 @@ void SelectScene::Update(Scene& eCurScene, Stage& eCurStage)
 	if (eCurStage == Stage::FAIL)
 		return;
 
-	titleSystem.EnterAnimation();
+	FadeManager::GetInst()->EnterAnimation();
 	//여기다 게임시작하는 함수 넣어야함
 	eCurScene = Scene::GAME;
 }

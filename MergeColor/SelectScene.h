@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "TitleSystem.h"
+#include "FadeManager.h"
 
 // StageCnt는 스테이지 개수
 
