@@ -187,5 +187,67 @@ void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
 	SetColor();
 }
 
+Select InGameSystem::GetCurrentSelectWhenClear()
+{
+	COORD resolution = GetConsoleResolution();
+	int center = resolution.X * 0.5f;
+
+	Key eKey = KeyController();
+
+	SetColor(COLOR::YELLOW);
+	IsGotoxy(center, resolution.Y * 0.75f);
+	cout << "EXIT";
+	SetColor();
+
+	if (eKey == Key::SPACE)
+	{
+		return Select::EXIT;
+	}
+
+	return Select::FAIL;
+}
+
+Select InGameSystem::GetCurrentSelectWhenFail()
+{
+	COORD resolution = GetConsoleResolution();
+	int offset = 10;
+	int center = resolution.X * 0.5f;
+	int exitX = center - offset;
+	int retryX = center + offset;
+	static int select = exitX;
+
+	Key eKey = KeyController();
+
+	switch (eKey)
+	{
+	case Key::LEFT:
+		select = exitX;
+		SetColor(COLOR::YELLOW);
+		IsGotoxy(exitX, resolution.Y * 0.75f);
+		cout << "EXIT";
+		SetColor();
+		IsGotoxy(retryX, resolution.Y * 0.75f);
+		cout << "RETRY";
+		break;
+	case Key::RIGHT:
+		select = retryX;
+		SetColor();
+		IsGotoxy(exitX, resolution.Y * 0.75f);
+		cout << "EXIT";
+		SetColor(COLOR::YELLOW);
+		IsGotoxy(retryX, resolution.Y * 0.75f);
+		cout << "RETRY";
+		break;
+	case Key::SPACE:
+		if(select == exitX)
+			return Select::EXIT;
+		else if(select == retryX)
+			return Select::RETRY;
+		break;
+	}
+
+	SetColor();
+}
+
 
 

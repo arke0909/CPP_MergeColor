@@ -1,5 +1,6 @@
 #pragma once
 #include "Block.h"
+#include "KeyController.h"
 #include "Single.h"
 
 const int Map_HEIGHT = 6;
@@ -24,5 +25,7 @@ public:
 	float Timer();
 	bool CheckFailGame();
 	void RenderMergeInfoUI(BlockType a, BlockType b);
+	Select GetCurrentSelectWhenClear(); 
+	Select GetCurrentSelectWhenFail();
 };
 
