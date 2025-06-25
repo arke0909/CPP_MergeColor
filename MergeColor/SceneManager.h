@@ -7,7 +7,7 @@ class SceneManager : public Single<SceneManager>
 	friend class Single<SceneManager>;
 
 private:
-	Scene _curScene = Scene::SELECT;
+	Scene _curScene = Scene::TITLE;
 	Stage _curStage = Stage::NONE;
 	int _stageCnt = 10;
 	GameData dataArr[10]
