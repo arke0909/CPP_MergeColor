@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
-#include "KeyController.h"
 #include "AsciiObjects.h"
 #include "InGameSystem.h"
 #include "Console.h"
+
 using std::pair;
 
 typedef struct GameDataStruct 
@@ -35,12 +35,12 @@ private:
 	};
 
 public:
-	void Update(GameData mapData);
+	void Update(Scene &curScene, GameData mapData);
 	void Render();
 private:
 	void PlayingUpdate();
 	void PlayingRender();
-	void NonPlayingUpdate();
+	void NonPlayingUpdate(Scene &curScene);
 	void NonPlayingRender();
 };
 
