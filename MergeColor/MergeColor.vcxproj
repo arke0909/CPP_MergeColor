@@ -132,7 +132,7 @@
     <ClCompile Include="AsciiObjects.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Block.h" />
-    <ClCompile Include="ClearInfoManager.cpp" />
+    <ClCompile Include="ClearInfo.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="GameScene.cpp" />
@@ -147,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsciiObjects.h" />
-    <ClInclude Include="ClearInfoManager.h" />
+    <ClInclude Include="ClearInfo.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Defines.h" />

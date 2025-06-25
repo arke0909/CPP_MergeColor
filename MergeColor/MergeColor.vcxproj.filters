@@ -70,7 +70,7 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
-    <ClCompile Include="ClearInfoManager.cpp">
+    <ClCompile Include="ClearInfo.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
   </ItemGroup>
@@ -117,7 +117,7 @@
     <ClInclude Include="SoundManager.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
-    <ClInclude Include="ClearInfoManager.h">
+    <ClInclude Include="ClearInfo.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
   </ItemGroup>
