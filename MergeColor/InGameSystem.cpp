@@ -99,7 +99,8 @@ void InGameSystem::MergeColor(Block& block, Block& target)
 		block.blockType = BlockType::NONE;
 		target.blockType = calcBlockType;
 
-		SoundManager::GetInst()->PlayEffect();
+		SoundManager::GetInst()->MciPlayEffect();
+
 	}
 }
 
