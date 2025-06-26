@@ -9,7 +9,7 @@ enum class Menu
 };
 enum class Select
 {
-	EXIT, RETRY, FAIL
+	EXIT, RETRY, NEXT, FAIL
 };
 enum class Scene
 {
