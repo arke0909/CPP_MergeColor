@@ -138,10 +138,10 @@ void GameScene::NonPlayingUpdate(Scene &curScene)
 	switch (_inGameState)
 	{
 	case InGameState::CLEAR:
-		curSelect = _gameSystem.GetCurrentSelectWhenClear(curScene);
+		curSelect = _gameSystem.GetCurrentSelectWhenClear();
 		break;
 	case InGameState::FAIL:
-		curSelect = _gameSystem.GetCurrentSelectWhenFail(curScene);
+		curSelect = _gameSystem.GetCurrentSelectWhenFail();
 		break;
 	}
 
