@@ -9,6 +9,7 @@ private:
 	~SoundManager() {}
 public:
 	void PlayBGM();
-	void PlayEffect();
+	void MciPlayEffect();
+	void SoundPlayEffect();
 };
 

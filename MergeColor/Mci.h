@@ -23,5 +23,6 @@ struct SoundEntry
 bool InitAllSounds();
 // 재생
 void PlaySoundID(SOUNDID _id, bool _repeat = false);
+void PlaySoundSFX(SOUNDID _id);
 // 릴리즈 
 void ReleaseAllSounds();    

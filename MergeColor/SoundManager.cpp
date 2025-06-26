@@ -7,7 +7,12 @@ void SoundManager::PlayBGM()
 	PlaySoundID(SOUNDID::BGM, true);
 }
 
-void SoundManager::PlayEffect()
+void SoundManager::MciPlayEffect()
 {
 	PlaySoundID(SOUNDID::MERGE, false);
+}
+
+void SoundManager::SoundPlayEffect()
+{
+	PlaySoundSFX(SOUNDID::MERGE);
 }

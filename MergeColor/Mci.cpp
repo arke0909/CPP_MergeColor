@@ -103,6 +103,12 @@ void PlaySoundID(SOUNDID _id, bool _repeat)
 	PlayMciDevice(devId, _repeat);
 }
 
+void PlaySoundSFX(SOUNDID _id)
+{
+	LPCWSTR path = SoundTable[(int)_id].path.c_str();
+	PlaySound(path, NULL, SND_ASYNC);
+}
+
 void ReleaseAllSounds()
 {
 	for (auto& sound : SoundTable)
