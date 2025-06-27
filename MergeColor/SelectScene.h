@@ -8,6 +8,7 @@ class  SelectScene
 {
 private:
 	int _stageCnt = 0;
+	InTitleState _inTitleState = InTitleState::NONE;
 	TitleSystem titleSystem = TitleSystem(_stageCnt);
 
 public:
