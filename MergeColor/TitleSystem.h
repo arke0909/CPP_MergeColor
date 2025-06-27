@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "KeyController.h"
+#include "ClearInfo.h"
 #include "Console.h"
-
 class TitleSystem
 {
 private:
