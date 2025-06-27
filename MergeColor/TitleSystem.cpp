@@ -4,8 +4,15 @@ Stage TitleSystem::GetCurSelectStage()
 {
 	COORD resolution = GetConsoleResolution(); 
 	int x = resolution.X / 3 + 10;
-	static int y = resolution.Y / 3 + 4;;
+	static int y = resolution.Y / 3 + 4;
 	static int originy = y;
+	static bool IsStart = true;
+	if (IsStart)
+	{
+		IsStart = false;
+		IsGotoxy(x - 2, originy);
+		cout << ">";
+	}
 	Key eKey = KeyController();
 	switch (eKey)
 	{
