@@ -2,6 +2,7 @@
 #include <vector>
 #include "AsciiObjects.h"
 #include "InGameSystem.h"
+#include "FadeManager.h"
 #include "Console.h"
 
 using std::pair;

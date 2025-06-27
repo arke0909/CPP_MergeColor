@@ -1,8 +1,10 @@
 #include "InGameSystem.h"
 #include "SoundManager.h"
 using std::max;
+using std::min;
 using std::clock;
 #undef max;
+#undef min;
 void InGameSystem::Reset(Map gameMap, Block inGameBlock[Map_HEIGHT][Map_WIDTH], float time)
 {
 	this->time = currentTime = time;
@@ -96,11 +98,9 @@ void InGameSystem::MergeColor(Block& block, Block& target)
 
 	if (calcBlockType != target.blockType)
 	{
+		SoundManager::GetInst()->SoundPlayEffect();
 		block.blockType = BlockType::NONE;
 		target.blockType = calcBlockType;
-
-		SoundManager::GetInst()->MciPlayEffect();
-
 	}
 }
 
@@ -179,15 +179,15 @@ void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
 	COLOR resultColor = TransitionColor(CalcBlockType(a, b));
 
 	SetColor(aColor);
-	cout << "¡á ";
+	cout << "ï¿½ï¿½ ";
 	SetColor();
 	cout << "+ ";
 	SetColor(bColor);
-	cout << "¡á ";
+	cout << "ï¿½ï¿½ ";
 	SetColor();
 	cout << "= ";
 	SetColor(resultColor);
-	cout << "¡á";
+	cout << "ï¿½ï¿½";
 	SetColor();
 }
 
@@ -218,39 +218,54 @@ Select InGameSystem::GetCurrentSelectWhenFail()
 	int center = resolution.X * 0.5f;
 	int exitX = center - offset;
 	int retryX = center + offset;
-	static int select = exitX;
+	static int select = (int)Select::EXIT;
 
 	Key eKey = KeyController();
+
 
 	switch (eKey)
 	{
 	case Key::LEFT:
-		select = exitX;
-		SetColor(COLOR::YELLOW);
-		IsGotoxy(exitX, resolution.Y * 0.75f);
-		cout << "EXIT";
-		SetColor();
-		IsGotoxy(retryX, resolution.Y * 0.75f);
-		cout << "RETRY";
+		select = max(0,--select);
 		break;
 	case Key::RIGHT:
-		select = retryX;
+		select = min((int)Select::RETRY, ++select);
+		break;
+	case Key::SPACE:
+
+		if (select == (int)Select::EXIT)
+			return Select::EXIT;
+		else if (select == (int)Select::RETRY)
+		{
+			select = (int)Select::EXIT;
+			return Select::RETRY;
+		}
+		break;
+	}
+
+	switch (select)
+	{
+	case (int)Select::EXIT:
+		SetColor(COLOR::YELLOW);
+		IsGotoxy(exitX, resolution.Y * 0.75f);
+		cout << "EXIT";
+		SetColor();
+		IsGotoxy(retryX, resolution.Y * 0.75f);
+		cout << "RETRY";
+		break;
+	case (int)Select::RETRY:
 		SetColor();
 		IsGotoxy(exitX, resolution.Y * 0.75f);
 		cout << "EXIT";
 		SetColor(COLOR::YELLOW);
 		IsGotoxy(retryX, resolution.Y * 0.75f);
 		cout << "RETRY";
-		break;
-	case Key::SPACE:
-		if(select == exitX)
-			return Select::EXIT;
-		else if(select == retryX)
-			return Select::RETRY;
 		break;
 	}
 
 	SetColor();
+
+	return Select::FAIL;
 }
 
 

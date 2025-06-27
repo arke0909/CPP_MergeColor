@@ -5,9 +5,7 @@ void GameScene::Update(Scene &curScene, GameData gameData)
 {
 	if (_dataId != gameData.dataId)
 	{
-		_isClear = false;
 		_dataId = gameData.dataId;
-		_inGameState = InGameState::PLAYING;
 
 		for (int i = 0; i < Map_HEIGHT; ++i)
 		{
@@ -28,7 +26,6 @@ void GameScene::Update(Scene &curScene, GameData gameData)
 	default:
 		NonPlayingUpdate(curScene);
 		break;
-
 	}
 }
 
@@ -133,7 +130,7 @@ void GameScene::NonPlayingUpdate(Scene &curScene)
 	static int x = 0;
 
 	Key eKey = KeyController();
-	Select curSelect;
+	Select curSelect = Select::FAIL;
 
 	switch (_inGameState)
 	{
@@ -145,6 +142,30 @@ void GameScene::NonPlayingUpdate(Scene &curScene)
 		break;
 	}
 
+	if (curSelect == Select::FAIL) return;
+	
+	switch (curSelect)
+	{
+	case Select::EXIT:
+		system("cls");
+		curScene = Scene::TITLE;
+		_inGameState = InGameState::PLAYING;
+		_dataId = 0;
+		Sleep(150);
+		break;
+	case Select::RETRY:
+		_dataId = 0;
+		FadeManager::GetInst()->EnterAnimation();
+		_gameSystem.Reset(_originMapData, _inGameMap
+			, _gameSystem.time);
+		break;
+	case Select::NEXT:
+		break;
+	}
+
+	_isClear = false;
+	_isFail = false;
+	_inGameState = InGameState::PLAYING;
 }
 
 void GameScene::NonPlayingRender()
