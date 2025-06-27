@@ -1,5 +1,7 @@
 #include "ClearInfo.h"
-// init은 스테이지 정보 초기화 함수
+ClearInfo* ClearInfo::instance = nullptr;
+
+// init은 스테이지 정보 초기화라 시작할때 실행 하면 안되고 혹시나 초기화 시켜야할때 실행
 void ClearInfo::ClearInfoInit()
 {
     std::ofstream outFile(fileName);
@@ -14,24 +16,26 @@ void ClearInfo::ClearInfoInit()
         outFile.close();
     }
 }
-// 들어온 번호 번째 스테이지 클리어 여부 반환 
+
+// check는 스테이지 값 그대로 넣고 save는 -1 해주고 넣어야함
+
+// 들어온 번호 번째 스테이지 클리어 여부 반환
+// 매개변수에 스테이지 번호 넣으면 반환
 bool ClearInfo::CheckClearInfo(int num)
 {
     std::ifstream inFile(fileName);
-    if (!inFile.is_open()) 
-        return false;
-
     std::string line;
     for (int i = 0; i < num; i++) {
-        if (!std::getline(inFile, line)) 
-            return false;
+        std::getline(inFile, line);
     }
 
     inFile.close();
     return line == "1";
+
 }
 // 들어온 번호 번째 스테이지 클리어 여부 저장
-void ClearInfo::SaveClearInfo(int num, bool isClear)
+// num에 현제스테이지 -1 넣어주면됌
+void ClearInfo::SaveClearInfo(int num, bool isClear = true)
 {
     std::ifstream inFile(fileName);
     if (!inFile.is_open()) return;
