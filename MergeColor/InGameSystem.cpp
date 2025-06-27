@@ -200,7 +200,7 @@ Select InGameSystem::GetCurrentSelectWhenClear()
 
 	SetColor(COLOR::YELLOW);
 	IsGotoxy(center, resolution.Y * 0.75f);
-	cout << "EXIT";
+	cout << "<EXIT>";
 	SetColor();
 
 	if (eKey == Key::SPACE)

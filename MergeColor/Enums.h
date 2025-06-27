@@ -24,6 +24,10 @@ enum class InGameState
 {
 	NONE = 0, PLAYING = 1, CLEAR = 2, FAIL = 3,
 };
+enum class InTitleState
+{
+	NONE = 0, MENU = 1, SELECT = 2, FAIL = 3,
+};
 enum class Stage
 {
 	NONE, Stage1 = 1, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7, Stage8, Stage9, Stage10, FAIL
