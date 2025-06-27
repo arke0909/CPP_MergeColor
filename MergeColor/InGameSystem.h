@@ -1,7 +1,6 @@
 #pragma once
 #include "Block.h"
 #include "KeyController.h"
-#include "Single.h"
 
 const int Map_HEIGHT = 6;
 const int Map_WIDTH = 7;
@@ -10,6 +9,8 @@ typedef char Map[Map_HEIGHT][Map_WIDTH];
 
 class InGameSystem
 {
+private:
+	wstring selectStr[3];
 public:
 	float time = 0;
 	float currentTime = 0;
