@@ -164,7 +164,7 @@ float InGameSystem::Timer()
 	float gap = (checkTime - startTime) / CLOCKS_PER_SEC;
 	currentTime = time - gap;
 	currentTime = max(0.f, currentTime);
-	return currentTime; 
+	return currentTime;
 }
 
 bool InGameSystem::CheckFailGame()
@@ -179,15 +179,15 @@ void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
 	COLOR resultColor = TransitionColor(CalcBlockType(a, b));
 
 	SetColor(aColor);
-	cout << "ï¿½ï¿½ ";
+	cout << "¡á ";
 	SetColor();
 	cout << "+ ";
 	SetColor(bColor);
-	cout << "ï¿½ï¿½ ";
+	cout << "¡á ";
 	SetColor();
 	cout << "= ";
 	SetColor(resultColor);
-	cout << "ï¿½ï¿½";
+	cout << "¡á ";
 	SetColor();
 }
 
@@ -226,7 +226,7 @@ Select InGameSystem::GetCurrentSelectWhenFail()
 	switch (eKey)
 	{
 	case Key::LEFT:
-		select = max(0,--select);
+		select = max(0, --select);
 		break;
 	case Key::RIGHT:
 		select = min((int)Select::RETRY, ++select);
@@ -248,18 +248,18 @@ Select InGameSystem::GetCurrentSelectWhenFail()
 	case (int)Select::EXIT:
 		SetColor(COLOR::YELLOW);
 		IsGotoxy(exitX, resolution.Y * 0.75f);
-		cout << "EXIT";
+		cout << "<EXIT>";
 		SetColor();
 		IsGotoxy(retryX, resolution.Y * 0.75f);
-		cout << "RETRY";
+		cout << " RETRY ";
 		break;
 	case (int)Select::RETRY:
 		SetColor();
 		IsGotoxy(exitX, resolution.Y * 0.75f);
-		cout << "EXIT";
+		cout << " EXIT ";
 		SetColor(COLOR::YELLOW);
 		IsGotoxy(retryX, resolution.Y * 0.75f);
-		cout << "RETRY";
+		cout << "<RETRY>";
 		break;
 	}
 

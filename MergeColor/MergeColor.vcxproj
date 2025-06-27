@@ -137,12 +137,12 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="FadeManager.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="InGameSystem.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="KeyController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mci.cpp" />
     <ClCompile Include="SelectScene.cpp" />
-    <ClCompile Include="InGameSystem.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TitleSystem.cpp" />
   </ItemGroup>
