@@ -164,7 +164,7 @@ float InGameSystem::Timer()
 	float gap = (checkTime - startTime) / CLOCKS_PER_SEC;
 	currentTime = time - gap;
 	currentTime = max(0.f, currentTime);
-	return currentTime;
+	return currentTime; 
 }
 
 bool InGameSystem::CheckFailGame()
