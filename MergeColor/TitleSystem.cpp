@@ -7,12 +7,6 @@ Stage TitleSystem::GetCurSelectStage()
 	static int y = resolution.Y / 3 + 4;
 	static int originy = y;
 	static bool IsStart = true;
-	if (IsStart)
-	{
-		IsStart = false;
-		IsGotoxy(x - 2, originy);
-		cout << ">";
-	}
 	Key eKey = KeyController();
 	switch (eKey)
 	{
@@ -21,9 +15,8 @@ Stage TitleSystem::GetCurSelectStage()
 		{
 			IsGotoxy(x - 2, y);
 			cout << " ";
-			IsGotoxy(x - 2, --y);
-			cout << ">";
-			Sleep(100);
+			y--;
+			
 		}
 		break;
 	case Key::DOWN:
@@ -31,9 +24,7 @@ Stage TitleSystem::GetCurSelectStage()
 		{
 			IsGotoxy(x - 2, y);
 			cout << " ";
-			IsGotoxy(x - 2, ++y);
-			cout << ">";
-			Sleep(100);
+			y++;
 		}
 		break;
 	case Key::SPACE:
@@ -44,5 +35,8 @@ Stage TitleSystem::GetCurSelectStage()
 			return Stage::FAIL;
 		return (Stage)NextStage;
 	}
+	IsGotoxy(x - 2, y);
+	cout << ">";
+	Sleep(75);
 	return Stage::FAIL;
 }
