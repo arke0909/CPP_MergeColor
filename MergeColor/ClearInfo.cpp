@@ -1,7 +1,7 @@
 #include "ClearInfoManager.h"
-// initÀº ½ºÅ×ÀÌÁö Á¤º¸ ÃÊ±âÈ­ ÇÔ¼ö
 ClearInfoManager* ClearInfoManager::instance = nullptr;
 
+// initï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ÈµÇ°ï¿½ È¤ï¿½Ã³ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½ï¿½
 void ClearInfoManager::ClearInfoInit()
 {
     std::ofstream outFile(fileName);
@@ -16,24 +16,26 @@ void ClearInfoManager::ClearInfoInit()
         outFile.close();
     }
 }
-// µé¾î¿Â ¹øÈ£ ¹øÂ° ½ºÅ×ÀÌÁö Å¬¸®¾î ¿©ºÎ ¹ÝÈ¯ 
+
+// checkï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½Ö°ï¿½ saveï¿½ï¿½ -1 ï¿½ï¿½ï¿½Ö°ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
+
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
+// ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 bool ClearInfoManager::CheckClearInfo(int num)
 {
     std::ifstream inFile(fileName);
-    if (!inFile.is_open()) 
-        return false;
-
     std::string line;
     for (int i = 0; i < num; i++) {
-        if (!std::getline(inFile, line)) 
-            return false;
+        std::getline(inFile, line);
     }
 
     inFile.close();
     return line == "1";
+
 }
-// µé¾î¿Â ¹øÈ£ ¹øÂ° ½ºÅ×ÀÌÁö Å¬¸®¾î ¿©ºÎ ÀúÀå
-void ClearInfoManager::SaveClearInfo(int num, bool isClear)
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+// numï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -1 ï¿½Ö¾ï¿½ï¿½Ö¸ï¿½ï¿½
+void ClearInfoManager::SaveClearInfo(int num, bool isClear = true)
 {
     std::ifstream inFile(fileName);
     if (!inFile.is_open()) return;

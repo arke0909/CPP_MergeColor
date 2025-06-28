@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "KeyController.h"
+#include "ClearInfo.h"
 #include "Console.h"
 using std::max;
 using std::min;

@@ -48,7 +48,7 @@ Stage TitleSystem::GetCurSelectStage()
 {
 	COORD resolution = GetConsoleResolution(); 
 	int x = resolution.X / 3 + 10;
-	static int y = resolution.Y / 3 + 2;
+	static int y = resolution.Y / 3 + 4;
 	static int originy = y;
 	static bool IsStart = true;
 	Key eKey = KeyController();
@@ -77,7 +77,8 @@ Stage TitleSystem::GetCurSelectStage()
 		// 스테이지 개수보다 크거나 작으면 실패로 반환
 		if (NextStage > _stageCnt || NextStage < 1)
 			return Stage::FAIL;
-		return (Stage)NextStage;
+		if(ClearInfo::GetInst()->CheckClearInfo(NextStage))
+			return (Stage)NextStage;
 	}
 	IsGotoxy(x - 2, y);
 	cout << ">";
