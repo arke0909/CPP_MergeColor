@@ -1,10 +1,54 @@
 ﻿#include "TitleSystem.h"
 
+
+
+InTitleSelect TitleSystem::GetCurSelect()
+{
+	COORD resolution = GetConsoleResolution();
+	int x = resolution.X / 3 + 10;
+	static int y = resolution.Y / 3 + 4;
+	static int originy = y;
+	Key eKey = KeyController();
+	switch (eKey)
+	{
+	case Key::UP:
+		if (y > originy)
+		{
+			IsGotoxy(x - 2, y);
+			cout << " ";
+			y--;
+		}
+		break;
+	case Key::DOWN:
+		if (y < originy + 1) 
+		{
+			IsGotoxy(x - 2, y);
+			cout << " ";
+			y++;
+		}
+		break;
+	case Key::SPACE:
+		int curSelect = (y - originy) + 1;
+		if (curSelect > _stageCnt || curSelect < 1)
+			return InTitleSelect::FAIL;
+		else
+		{
+			IsGotoxy(x - 2, y);
+			cout << " ";
+			return (InTitleSelect)curSelect;
+		}
+	}
+	IsGotoxy(x - 2, y);
+	cout << ">";
+	Sleep(75);
+	return InTitleSelect::FAIL;
+}
+
 Stage TitleSystem::GetCurSelectStage()
 {
 	COORD resolution = GetConsoleResolution(); 
 	int x = resolution.X / 3 + 10;
-	static int y = resolution.Y / 3 + 4;
+	static int y = resolution.Y / 3 + 2;
 	static int originy = y;
 	static bool IsStart = true;
 	Key eKey = KeyController();
