@@ -51,7 +51,7 @@ void GameScene::PlayingUpdate()
 	else if (_isClear)
 	{
 		_inGameState = InGameState::CLEAR;
-		ClearInfoManager::GetInst()->SaveClearInfo(_dataId - 1);
+		ClearInfoManager::GetInst()->SaveClearInfo(_dataId);
 	}
 
 	static Key saveKey = Key::FAIL;

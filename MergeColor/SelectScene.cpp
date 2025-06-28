@@ -1,5 +1,4 @@
 ﻿#include "SelectScene.h"
-#include "ClearInfoManager.h"
 
 void SelectScene::Update(Scene& eCurScene, Stage& eCurStage)
 {
