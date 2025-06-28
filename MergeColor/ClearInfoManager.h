@@ -8,8 +8,8 @@ class ClearInfoManager : public Single<ClearInfoManager>
 	friend class Single<ClearInfoManager>;
 private:
 	std::string const fileName = "ClearInfo.txt";
-	ClearInfo() {}
-	~ClearInfo() {}
+	ClearInfoManager() {}
+	~ClearInfoManager() {}
 public:
     void ClearInfoInit();
 	bool CheckClearInfo(int num);
