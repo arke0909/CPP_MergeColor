@@ -1,6 +1,8 @@
-#include "ClearInfo.h"
+#include "ClearInfoManager.h"
 // init은 스테이지 정보 초기화 함수
-void ClearInfo::ClearInfoInit()
+ClearInfoManager* ClearInfoManager::instance = nullptr;
+
+void ClearInfoManager::ClearInfoInit()
 {
     std::ofstream outFile(fileName);
     if (outFile.is_open())
@@ -15,7 +17,7 @@ void ClearInfo::ClearInfoInit()
     }
 }
 // 들어온 번호 번째 스테이지 클리어 여부 반환 
-bool ClearInfo::CheckClearInfo(int num)
+bool ClearInfoManager::CheckClearInfo(int num)
 {
     std::ifstream inFile(fileName);
     if (!inFile.is_open()) 
@@ -31,7 +33,7 @@ bool ClearInfo::CheckClearInfo(int num)
     return line == "1";
 }
 // 들어온 번호 번째 스테이지 클리어 여부 저장
-void ClearInfo::SaveClearInfo(int num, bool isClear)
+void ClearInfoManager::SaveClearInfo(int num, bool isClear)
 {
     std::ifstream inFile(fileName);
     if (!inFile.is_open()) return;
