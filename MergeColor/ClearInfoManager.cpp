@@ -49,13 +49,17 @@ void ClearInfoManager::SaveClearInfo(int num)
     std::ofstream outFile(fileName);
     if (!outFile.is_open())
         return;
-
     for (int i = 0; i < 10; i++)
     {
         if (i == num)
             outFile << "2" << '\n';
         else if (i == num + 1)
-            outFile << "1" << '\n';
+        {
+            if (lines[num + 1] == "2")
+                outFile << "2" << '\n';
+            else
+                outFile << "1" << '\n';
+        }
         else
             outFile << lines[i] << '\n';
     }
