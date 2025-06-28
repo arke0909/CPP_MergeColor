@@ -103,13 +103,11 @@ void GameScene::PlayingRender()
 	for (int i = 0; i < 3; ++i)
 	{
 		IsGotoxy(resolution.X * 0.3f * (i + 1) - 15, resolution.Y * 0.25f);
-		BlockType a = colorInfo[i].first;
-		BlockType b = colorInfo[i].second;
-		_gameSystem.RenderMergeInfoUI(a, b);
+		InfoUIManager::GetInst()->RenderMergeInfoUI(i);
 	}
 
 	IsGotoxy(resolution.X * 0.17f, resolution.Y * 0.35f);
-	cout << "← : 좌로 이동\t→ : 우로 이동\t↑ : 위로 이동\t↓ : 아래로 이동";
+	InfoUIManager::GetInst()->InputArrowInfoUI();
 
 	float x = (resolution.X * 0.5f) - ((Map_WIDTH - 1) / 2) * 2;
 	float y = (resolution.Y * 0.3f) + Map_HEIGHT / 2;

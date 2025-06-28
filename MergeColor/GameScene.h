@@ -1,12 +1,9 @@
 #pragma once
-#include <vector>
 #include "AsciiObjects.h"
 #include "InGameSystem.h"
 #include "FadeManager.h"
 #include "ClearInfoManager.h"
-#include "Console.h"
-
-using std::pair;
+#include "InfoUIManager.h"
 
 typedef struct GameDataStruct 
 {
@@ -29,12 +26,7 @@ private:
 	Map _originMapData;
 	Block _inGameMap[Map_HEIGHT][Map_WIDTH];
 
-	pair<BlockType, BlockType> colorInfo[3]
-	{
-		{BlockType::RED, BlockType::YELLOW},
-		{BlockType::RED, BlockType::BLUE},
-		{BlockType::YELLOW, BlockType::BLUE},
-	};
+	
 
 public:
 	void Update(Scene &curScene, GameData mapData);
