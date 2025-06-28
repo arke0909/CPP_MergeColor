@@ -5,7 +5,7 @@ enum class Key
 };
 enum class InTitleSelect
 {
-	NONE = 0, START, QUIT, FAIL
+	NONE = 0, START, INFO, QUIT, FAIL
 };
 enum class InGameSelect
 {
@@ -13,7 +13,7 @@ enum class InGameSelect
 };
 enum class Scene
 {
-	TITLE, GAME, QUIT, END
+	TITLE, GAME, INFO, QUIT, END
 };
 enum class BlockType
 {
@@ -26,7 +26,7 @@ enum class InGameState
 };
 enum class InTitleState
 {
-	NONE = 0, MENU = 1, SELECT = 2, FAIL = 3,
+	NONE = 0, MENU = 1, SELECT = 2, INFO = 3, FAIL = 4,
 };
 enum class Stage
 {
