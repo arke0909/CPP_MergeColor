@@ -9,7 +9,7 @@ class ClearInfoManager : public Single<ClearInfoManager>
 {
 	friend class Single<ClearInfoManager>;
 private:
-	std::string const fileName = "ClearInfo.txt";
+	std::string const fileName = "Resource/ClearInfo.txt";
 	ClearInfoManager() {}
 	~ClearInfoManager() {}
 public:
