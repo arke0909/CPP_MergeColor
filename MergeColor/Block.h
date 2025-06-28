@@ -3,6 +3,7 @@
 #include "Console.h"
 
 COLOR TransitionColor(BlockType blockType);
+BlockType CalcBlockType(BlockType block, BlockType target);
 
 typedef struct Block
 {
