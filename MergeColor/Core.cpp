@@ -1,5 +1,4 @@
 #include "Core.h"
-#include "SoundManager.h"
 
 void Core::Run()
 {
@@ -21,6 +20,7 @@ void Core::Init()
 	SetCursorVisual(false, 50);
 	SceneManager::GetInst()->Init();
 	SoundManager::GetInst()->PlayBGM();
+	ClearInfoManager::GetInst()->ClearInfoInit();
 }
 
 

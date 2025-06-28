@@ -3,13 +3,13 @@ enum class Key
 {
 	UP, DOWN, LEFT, SPACE,RIGHT,ESC, FAIL
 };
-enum class Menu
+enum class InTitleSelect
 {
-	START, QUIT, FAIL
+	NONE = 0, START, QUIT, FAIL
 };
-enum class Select
+enum class InGameSelect
 {
-	NONE = 0 ,EXIT, RETRY, NEXT, FAIL
+	NONE = 0 ,EXIT, RETRY, FAIL
 };
 enum class Scene
 {

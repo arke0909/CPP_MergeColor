@@ -1,5 +1,7 @@
 #pragma once
 #include "SceneManager.h"
+#include "SoundManager.h"
+#include "ClearInfoManager.h"
 #include "Console.h"
 class Core
 {
