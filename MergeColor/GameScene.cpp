@@ -49,7 +49,10 @@ void GameScene::PlayingUpdate()
 	if (_isFail)
 		_inGameState = InGameState::FAIL;
 	else if (_isClear)
+	{
 		_inGameState = InGameState::CLEAR;
+		ClearInfoManager::GetInst()->SaveClearInfo(_dataId, true);
+	}
 
 	static Key saveKey = Key::FAIL;
 
@@ -104,7 +107,6 @@ void GameScene::PlayingRender()
 		BlockType b = colorInfo[i].second;
 		_gameSystem.RenderMergeInfoUI(a, b);
 	}
-	
 
 	IsGotoxy(resolution.X * 0.17f, resolution.Y * 0.35f);
 	cout << "← : 좌로 이동\t→ : 우로 이동\t↑ : 위로 이동\t↓ : 아래로 이동";
@@ -130,7 +132,7 @@ void GameScene::NonPlayingUpdate(Scene &curScene)
 	static int x = 0;
 
 	Key eKey = KeyController();
-	Select curSelect = Select::FAIL;
+	InGameSelect curSelect = InGameSelect::FAIL;
 
 	switch (_inGameState)
 	{
@@ -142,24 +144,22 @@ void GameScene::NonPlayingUpdate(Scene &curScene)
 		break;
 	}
 
-	if (curSelect == Select::FAIL) return;
+	if (curSelect == InGameSelect::FAIL) return;
 	
 	switch (curSelect)
 	{
-	case Select::EXIT:
+	case InGameSelect::EXIT:
 		system("cls");
 		curScene = Scene::TITLE;
 		_inGameState = InGameState::PLAYING;
 		_dataId = 0;
 		Sleep(150);
 		break;
-	case Select::RETRY:
+	case InGameSelect::RETRY:
 		_dataId = 0;
 		FadeManager::GetInst()->EnterAnimation();
 		_gameSystem.Reset(_originMapData, _inGameMap
 			, _gameSystem.time);
-		break;
-	case Select::NEXT:
 		break;
 	}
 
