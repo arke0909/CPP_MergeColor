@@ -6,9 +6,12 @@
 
 class FadeManager : public Single<FadeManager>
 {
+	friend class Single<FadeManager>;
 public:
 	void EnterAnimation();
 private:
+	FadeManager() {};
+	~FadeManager() {};
 	void SpiralAnimation(COORD _resolution, int _delaytime);
 };
 
