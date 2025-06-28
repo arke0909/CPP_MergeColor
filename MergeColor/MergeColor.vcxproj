@@ -146,7 +146,7 @@
     <ClCompile Include="Mci.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="SoundManager.cpp" />
-    <ClCompile Include="TitleSystem.cpp" />
+    <ClCompile Include="SelectSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsciiObjects.h" />
@@ -166,7 +166,7 @@
     <ClInclude Include="Single.h" />
     <ClInclude Include="InGameSystem.h" />
     <ClInclude Include="SoundManager.h" />
-    <ClInclude Include="TitleSystem.h" />
+    <ClInclude Include="SelectSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

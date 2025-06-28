@@ -55,7 +55,7 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
-    <ClCompile Include="TitleSystem.cpp">
+    <ClCompile Include="SelectSystem.cpp">
       <Filter>04.Scene</Filter>
     </ClCompile>
     <ClCompile Include="Block.h">
@@ -79,7 +79,9 @@
     <ClCompile Include="ClearInfoManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
-    <ClCompile Include="InfoUIManager.cpp" />
+    <ClCompile Include="InfoUIManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enums.h">
@@ -118,7 +120,7 @@
     <ClInclude Include="SelectScene.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
-    <ClInclude Include="TitleSystem.h">
+    <ClInclude Include="SelectSystem.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
     <ClInclude Include="SoundManager.h">
@@ -133,7 +135,9 @@
     <ClInclude Include="FadeManager.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
-    <ClInclude Include="InfoUIManager.h" />
+    <ClInclude Include="InfoUIManager.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

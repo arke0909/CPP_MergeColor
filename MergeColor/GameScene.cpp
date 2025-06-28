@@ -100,6 +100,11 @@ void GameScene::PlayingRender()
 	cout << std::setw(5) << std::setfill('0') << std::fixed;
 	cout << _time;
 
+	SetColor(COLOR::LIGHT_YELLOW);
+	IsGotoxy(resolution.X * 0.5f - 30, resolution.Y * 0.1f);
+	cout << "[ 같은 블록끼리 합쳐지면 사라집니다. 모든 블록을 제거하세요!! ]";
+	SetColor();
+
 	for (int i = 0; i < 3; ++i)
 	{
 		IsGotoxy(resolution.X * 0.3f * (i + 1) - 15, resolution.Y * 0.25f);

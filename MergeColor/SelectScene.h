@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "TitleSystem.h"
+#include "SelectSystem.h"
 #include "FadeManager.h"
 #include "GameManager.h"
 #include "InfoUIManager.h"
@@ -14,7 +14,7 @@ private:
 	int _stageYOffset = 2;
 	int _startY = 0;
 	InTitleState _inTitleState = InTitleState::MENU;
-	TitleSystem titleSystem = TitleSystem(_stageCnt);
+	SelectSystem titleSystem = SelectSystem(_stageCnt);
 
 public:
 	SelectScene(int stageCnt) : _stageCnt(stageCnt) {}

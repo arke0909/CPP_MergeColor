@@ -100,12 +100,18 @@ void SelectScene::Render()
 			cout << "Stage" << i + 1;
 			SetColor();
 		}
+
+		SetColor(COLOR::LIGHT_YELLOW);
+		IsGotoxy(resolution.X * 0.5f - 23, resolution.Y * 0.9f);
+		cout << "[ ESC 키를 눌러 메뉴창으로 돌아갈 수 있습니다. ]";
+		SetColor();
 		break;
 	case InTitleState::INFO:
 
+		IsGotoxy(resolution.X * 0.5f - 22, resolution.Y * 0.35f);
+		cout << "[ 색이 같은 블록끼리 합치면 블록이 사라집니다. ]";
 		IsGotoxy(resolution.X * 0.5f - 5, resolution.Y * 0.45f);
 		cout << "[ 혼합 규칙 ]";
-
 
 		for (int i = 0; i < 3; ++i)
 		{
@@ -118,6 +124,13 @@ void SelectScene::Render()
 
 		IsGotoxy(resolution.X * 0.17f, resolution.Y * 0.75f);
 		InfoUIManager::GetInst()->InputArrowInfoUI();
+
+		IsGotoxy(resolution.X * 0.5f - 18, resolution.Y * 0.85f);
+		cout << "[ 스페이스 바를 눌러 선택지를 선택합니다. ]";
+		SetColor(COLOR::LIGHT_YELLOW);
+		IsGotoxy(resolution.X * 0.5f - 25, resolution.Y * 0.95f);
+		cout << "[ 스페이스 바를 눌러 메뉴창으로 돌아갈 수 있습니다. ]";
+		SetColor();
 		break;
 	}
 
