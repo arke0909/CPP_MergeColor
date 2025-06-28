@@ -1,6 +1,7 @@
 #pragma once
 #include "Single.h"
 #include <string>
+#include <iostream>
 #include <fstream>
 #include <vector>
 class ClearInfoManager : public Single<ClearInfoManager>
@@ -13,6 +14,6 @@ private:
 public:
     void ClearInfoInit();
 	bool CheckClearInfo(int num);
-	void SaveClearInfo(int num, bool isClear);
+	void SaveClearInfo(int num);
 };
 

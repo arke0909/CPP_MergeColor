@@ -1,7 +1,6 @@
 #include "ClearInfoManager.h"
 ClearInfoManager* ClearInfoManager::instance = nullptr;
 
-// init�� �������� ���� �ʱ�ȭ�� �����Ҷ� ���� �ϸ� �ȵǰ� Ȥ�ó� �ʱ�ȭ ���Ѿ��Ҷ� ����
 void ClearInfoManager::ClearInfoInit()
 {
     std::ofstream outFile(fileName);
@@ -17,35 +16,31 @@ void ClearInfoManager::ClearInfoInit()
     }
 }
 
-// check�� �������� �� �״�� �ְ� save�� -1 ���ְ� �־����
-
-// ���� ��ȣ ��° �������� Ŭ���� ���� ��ȯ
-// �Ű������� �������� ��ȣ ������ ��ȯ
 bool ClearInfoManager::CheckClearInfo(int num)
 {
     std::ifstream inFile(fileName);
     std::string line;
     for (int i = 0; i < num; i++) {
         std::getline(inFile, line);
+        std::cout << line << ' ';
     }
 
     inFile.close();
     return line == "1";
 
 }
-// ���� ��ȣ ��° �������� Ŭ���� ���� ����
-// num�� ������������ -1 �־��ָ��
-void ClearInfoManager::SaveClearInfo(int num, bool isClear = true)
+
+void ClearInfoManager::SaveClearInfo(int num)
 {
     std::ifstream inFile(fileName);
     if (!inFile.is_open()) return;
     
     std::string line;
-    for (int i = 0; i < 10; i++) 
+    for (int i = 1; i <= 10; i++) 
     {
 		std::getline(inFile, line);
         if(i == num)
-            line = isClear ? "1" : "0";
+            line = "1";
     }
 	inFile.close();
 
@@ -53,7 +48,7 @@ void ClearInfoManager::SaveClearInfo(int num, bool isClear = true)
     if (!outFile.is_open()) 
         return;
 
-    for (int i = 0; i < 10; i++) 
+    for (int i = 1; i <= 10; i++) 
     {
         if (i == num) 
             outFile << line;

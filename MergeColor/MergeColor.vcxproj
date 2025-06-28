@@ -132,7 +132,7 @@
     <ClCompile Include="AsciiObjects.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Block.h" />
-    <ClCompile Include="ClearInfo.cpp" />
+    <ClCompile Include="ClearInfoManager.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="FadeManager.cpp" />
