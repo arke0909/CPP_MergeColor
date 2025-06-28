@@ -1,6 +1,11 @@
 #pragma once
 #include "Block.h"
 #include "KeyController.h"
+using std::max;
+using std::min;
+using std::clock;
+#undef max;
+#undef min;
 
 const int Map_HEIGHT = 6;
 const int Map_WIDTH = 7;
@@ -26,7 +31,7 @@ public:
 	float Timer();
 	bool CheckFailGame();
 	void RenderMergeInfoUI(BlockType a, BlockType b);
-	Select GetCurrentSelectWhenClear(); 
-	Select GetCurrentSelectWhenFail();
+	InGameSelect GetCurrentSelectWhenClear(); 
+	InGameSelect GetCurrentSelectWhenFail();
 };
 

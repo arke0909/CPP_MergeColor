@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsciiObjects.h" />
-    <ClInclude Include="ClearInfo.h" />
+    <ClInclude Include="ClearInfoManager.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Defines.h" />

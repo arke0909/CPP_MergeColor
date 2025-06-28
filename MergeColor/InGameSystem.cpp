@@ -1,10 +1,6 @@
 #include "InGameSystem.h"
 #include "SoundManager.h"
-using std::max;
-using std::min;
-using std::clock;
-#undef max;
-#undef min;
+
 void InGameSystem::Reset(Map gameMap, Block inGameBlock[Map_HEIGHT][Map_WIDTH], float time)
 {
 	this->time = currentTime = time;
@@ -191,7 +187,7 @@ void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
 	SetColor();
 }
 
-Select InGameSystem::GetCurrentSelectWhenClear()
+InGameSelect InGameSystem::GetCurrentSelectWhenClear()
 {
 	COORD resolution = GetConsoleResolution();
 	int center = resolution.X * 0.5f;
@@ -205,20 +201,20 @@ Select InGameSystem::GetCurrentSelectWhenClear()
 
 	if (eKey == Key::SPACE)
 	{
-		return Select::EXIT;
+		return InGameSelect::EXIT;
 	}
 
-	return Select::FAIL;
+	return InGameSelect::FAIL;
 }
 
-Select InGameSystem::GetCurrentSelectWhenFail()
+InGameSelect InGameSystem::GetCurrentSelectWhenFail()
 {
 	COORD resolution = GetConsoleResolution();
 	int offset = 10;
 	int center = resolution.X * 0.5f;
 	int exitX = center - offset;
 	int retryX = center + offset;
-	static int select = (int)Select::EXIT;
+	static int select = (int)InGameSelect::EXIT;
 
 	Key eKey = KeyController();
 
@@ -229,23 +225,23 @@ Select InGameSystem::GetCurrentSelectWhenFail()
 		select = max(0, --select);
 		break;
 	case Key::RIGHT:
-		select = min((int)Select::RETRY, ++select);
+		select = min((int)InGameSelect::RETRY, ++select);
 		break;
 	case Key::SPACE:
 
-		if (select == (int)Select::EXIT)
-			return Select::EXIT;
-		else if (select == (int)Select::RETRY)
+		if (select == (int)InGameSelect::EXIT)
+			return InGameSelect::EXIT;
+		else if (select == (int)InGameSelect::RETRY)
 		{
-			select = (int)Select::EXIT;
-			return Select::RETRY;
+			select = (int)InGameSelect::EXIT;
+			return InGameSelect::RETRY;
 		}
 		break;
 	}
 
 	switch (select)
 	{
-	case (int)Select::EXIT:
+	case (int)InGameSelect::EXIT:
 		SetColor(COLOR::YELLOW);
 		IsGotoxy(exitX, resolution.Y * 0.75f);
 		cout << "<EXIT>";
@@ -253,7 +249,7 @@ Select InGameSystem::GetCurrentSelectWhenFail()
 		IsGotoxy(retryX, resolution.Y * 0.75f);
 		cout << " RETRY ";
 		break;
-	case (int)Select::RETRY:
+	case (int)InGameSelect::RETRY:
 		SetColor();
 		IsGotoxy(exitX, resolution.Y * 0.75f);
 		cout << " EXIT ";
@@ -265,7 +261,7 @@ Select InGameSystem::GetCurrentSelectWhenFail()
 
 	SetColor();
 
-	return Select::FAIL;
+	return InGameSelect::FAIL;
 }
 
 
