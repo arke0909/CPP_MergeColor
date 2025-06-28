@@ -57,7 +57,24 @@ void SelectScene::Render()
 		for (int i = 0; i < _stageCnt; i++)
 		{
 			IsGotoxy(x, y + i - 2);
-			cout << "Stage" << i + 1 << endl;
+			cout << "Stage" << i + 1;
+			string inp = ClearInfoManager::GetInst()->CheckClearInfo(i + 1);
+			if (inp == "2")
+			{
+				SetColor(COLOR::GREEN);
+			}
+			else if (inp == "1")
+			{
+				SetColor(COLOR::WHITE);
+			}
+			else
+			{
+				SetColor(COLOR::GRAY);
+			}
+			IsGotoxy(x + 8, y + i - 2);
+			cout << "■";
+			SetColor();
+
 		}
 		break;
 	}

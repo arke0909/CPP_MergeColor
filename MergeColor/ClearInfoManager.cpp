@@ -16,7 +16,7 @@ void ClearInfoManager::ClearInfoInit()
     }
 }
 
-bool ClearInfoManager::CheckClearInfo(int num)
+std::string ClearInfoManager::CheckClearInfo(int num)
 {
     std::ifstream inFile(fileName);
     std::string line;
@@ -25,12 +25,14 @@ bool ClearInfoManager::CheckClearInfo(int num)
     }
 
     inFile.close();
-    return line == "1";
+    return line;
 
 }
 
 void ClearInfoManager::SaveClearInfo(int num)
 {
+    if (num == 10)
+        return;
     std::ifstream inFile(fileName);
     if (!inFile.is_open()) return;
 
@@ -51,6 +53,8 @@ void ClearInfoManager::SaveClearInfo(int num)
     for (int i = 0; i < 10; i++)
     {
         if (i == num)
+            outFile << "2" << '\n';
+        else if (i == num + 1)
             outFile << "1" << '\n';
         else
             outFile << lines[i] << '\n';

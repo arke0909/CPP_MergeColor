@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+
 class ClearInfoManager : public Single<ClearInfoManager>
 {
 	friend class Single<ClearInfoManager>;
@@ -13,7 +14,7 @@ private:
 	~ClearInfoManager() {}
 public:
     void ClearInfoInit();
-	bool CheckClearInfo(int num);
+	std::string CheckClearInfo(int num);
 	void SaveClearInfo(int num);
 };
 

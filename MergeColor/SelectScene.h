@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "TitleSystem.h"
 #include "FadeManager.h"
+#include "Enums.h"
 
 // StageCnt는 스테이지 개수
 

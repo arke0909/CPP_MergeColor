@@ -77,7 +77,7 @@ Stage TitleSystem::GetCurSelectStage()
 		// 스테이지 개수보다 크거나 작으면 실패로 반환
 		if (NextStage > _stageCnt || NextStage < 1)
 			return Stage::FAIL;
-		if(ClearInfoManager::GetInst()->CheckClearInfo(NextStage))
+		if(ClearInfoManager::GetInst()->CheckClearInfo(NextStage) != "0")
 			return (Stage)NextStage;
 	}
 	IsGotoxy(x - 2, y);
