@@ -100,23 +100,6 @@ void InGameSystem::MergeColor(Block& block, Block& target)
 	}
 }
 
-BlockType InGameSystem::CalcBlockType(BlockType block, BlockType target)
-{
-	if (block == target)
-		return BlockType::NONE;
-	else if (block == BlockType::RED && target == BlockType::YELLOW ||
-		block == BlockType::YELLOW && target == BlockType::RED)
-		return BlockType::ORENGE;
-	else if (block == BlockType::RED && target == BlockType::BLUE ||
-		block == BlockType::BLUE && target == BlockType::RED)
-		return BlockType::PUPLE;
-	else if (block == BlockType::BLUE && target == BlockType::YELLOW ||
-		block == BlockType::YELLOW && target == BlockType::BLUE)
-		return BlockType::GREEN;
-
-	return target;
-}
-
 bool InGameSystem::CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH])
 {
 	bool moving = false;
@@ -166,25 +149,6 @@ float InGameSystem::Timer()
 bool InGameSystem::CheckFailGame()
 {
 	return currentTime <= 0;
-}
-
-void InGameSystem::RenderMergeInfoUI(BlockType a, BlockType b)
-{
-	COLOR aColor = TransitionColor(a);
-	COLOR bColor = TransitionColor(b);
-	COLOR resultColor = TransitionColor(CalcBlockType(a, b));
-
-	SetColor(aColor);
-	cout << "бс ";
-	SetColor();
-	cout << "+ ";
-	SetColor(bColor);
-	cout << "бс ";
-	SetColor();
-	cout << "= ";
-	SetColor(resultColor);
-	cout << "бс";
-	SetColor();
 }
 
 InGameSelect InGameSystem::GetCurrentSelectWhenClear()

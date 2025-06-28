@@ -1,6 +1,6 @@
 #pragma once
-#include "Block.h"
 #include "KeyController.h"
+#include "InfoUIManager.h"
 using std::max;
 using std::min;
 using std::clock;
@@ -25,12 +25,10 @@ public:
 	void MoveUpdate(Block inGameBlock[Map_HEIGHT][Map_WIDTH], bool isXMove, int dir);
 	bool CalcBlock(PBlock block, PBlock target);
 	void MergeColor(Block& block, Block& target);
-	BlockType CalcBlockType(BlockType block, BlockType target);
 	bool CheckEndMove(Block inGameBlock[Map_HEIGHT][Map_WIDTH]);
 	bool CheckClearGame(Block inGameBlock[Map_HEIGHT][Map_WIDTH]);
 	float Timer();
 	bool CheckFailGame();
-	void RenderMergeInfoUI(BlockType a, BlockType b);
 	InGameSelect GetCurrentSelectWhenClear(); 
 	InGameSelect GetCurrentSelectWhenFail();
 };
