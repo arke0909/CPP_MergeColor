@@ -1,20 +1,5 @@
 #include "Block.h"
 
-void Block::Render()
-
-{
-	if (blockType == BlockType::NONE)
-	{
-		SetColor();
-		cout << "бр";
-	}
-	else
-	{
-		SetColor(TransitionColor(blockType));
-		cout << "бс";
-	}
-}
-
 COLOR TransitionColor(BlockType blockType)
 {
 	switch (blockType)
@@ -52,4 +37,18 @@ BlockType CalcBlockType(BlockType block, BlockType target)
 		return BlockType::GREEN;
 
 	return target;
+}
+
+void BlockStruct::Render()
+{
+	if (blockType == BlockType::NONE)
+	{
+		SetColor();
+		cout << "бр";
+	}
+	else
+	{
+		SetColor(TransitionColor(blockType));
+		cout << "бс";
+	}
 }

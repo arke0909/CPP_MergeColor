@@ -5,7 +5,7 @@
 COLOR TransitionColor(BlockType blockType);
 BlockType CalcBlockType(BlockType block, BlockType target);
 
-typedef struct Block
+typedef struct BlockStruct
 {
 	BlockType blockType = BlockType::NONE;
 	bool isMoving = false;
