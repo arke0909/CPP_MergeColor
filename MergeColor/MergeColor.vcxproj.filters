@@ -67,11 +67,19 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>02.Manager</Filter>
     </ClCompile>
-    <ClCompile Include="FadeManager.cpp" />
     <ClCompile Include="InGameSystem.cpp">
       <Filter>04.Scene</Filter>
     </ClCompile>
-    <ClCompile Include="ClearInfoManager.cpp" />
+    <ClCompile Include="GameManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearInfoManager.cpp">
+      <Filter>02.Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoUIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enums.h">
@@ -116,8 +124,16 @@
     <ClInclude Include="SoundManager.h">
       <Filter>99.Headers</Filter>
     </ClInclude>
-    <ClInclude Include="FadeManager.h" />
-    <ClInclude Include="ClearInfoManager.h" />
+    <ClInclude Include="GameManager.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearInfoManager.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeManager.h">
+      <Filter>99.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoUIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -5,7 +5,7 @@
 InTitleSelect TitleSystem::GetCurSelect()
 {
 	COORD resolution = GetConsoleResolution();
-	int x = resolution.X / 3 + 10;
+	int x = resolution.X / 2 - 3;
 	static int y = resolution.Y / 3 + 4;
 	static int originy = y;
 	Key eKey = KeyController();
@@ -20,7 +20,7 @@ InTitleSelect TitleSystem::GetCurSelect()
 		}
 		break;
 	case Key::DOWN:
-		if (y < originy + 1) 
+		if (y < originy + 2) 
 		{
 			IsGotoxy(x - 2, y);
 			cout << " ";
@@ -47,7 +47,7 @@ InTitleSelect TitleSystem::GetCurSelect()
 Stage TitleSystem::GetCurSelectStage()
 {
 	COORD resolution = GetConsoleResolution(); 
-	int x = resolution.X / 3 + 10;
+	int x = resolution.X / 2 - 3;
 	static int y = resolution.Y / 3 + 2;
 	static int originy = y;
 	static bool IsStart = true;
@@ -77,7 +77,8 @@ Stage TitleSystem::GetCurSelectStage()
 		// 스테이지 개수보다 크거나 작으면 실패로 반환
 		if (NextStage > _stageCnt || NextStage < 1)
 			return Stage::FAIL;
-		if(ClearInfoManager::GetInst()->CheckClearInfo(NextStage) != "0")
+		if(ClearInfoManager::GetInst()->CheckClearInfo(NextStage) == "1"
+			|| ClearInfoManager::GetInst()->CheckClearInfo(NextStage) == "2")
 			return (Stage)NextStage;
 	}
 	IsGotoxy(x - 2, y);
