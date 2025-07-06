@@ -174,12 +174,4 @@ void GameScene::NonPlayingUpdate(Scene &curScene)
 void GameScene::NonPlayingRender()
 {
 	_asciiObjects.Render(_inGameState);
-
-	switch (_inGameState)
-	{
-	case InGameState::CLEAR:
-		break;
-	case InGameState::FAIL:
-		break;
-	}
 }
